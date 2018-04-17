@@ -1,0 +1,175 @@
+diff -Naur a/arch/arm/dts/rk3328-evb.dts b/arch/arm/dts/rk3328-evb.dts
+--- a/arch/arm/dts/rk3328-evb.dts	2017-12-14 07:42:09.000000000 +0100
++++ b/arch/arm/dts/rk3328-evb.dts	2018-01-12 14:17:17.398961190 +0100
+@@ -7,6 +7,7 @@
+ /dts-v1/;
+ #include "rk3328.dtsi"
+ #include "rk3328-sdram-ddr3-666.dtsi"
++#include <dt-bindings/input/input.h>
+ 
+ / {
+ 	model = "Rockchip RK3328 EVB";
+@@ -41,6 +42,11 @@
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+ 	};
++
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 0>;
++	};
+ };
+ 
+ &saradc {
+diff -Naur a/arch/arm/mach-rockchip/boot_mode.c b/arch/arm/mach-rockchip/boot_mode.c
+--- a/arch/arm/mach-rockchip/boot_mode.c	2017-12-14 07:42:09.000000000 +0100
++++ b/arch/arm/mach-rockchip/boot_mode.c	2018-02-14 21:42:42.199260506 +0100
+@@ -14,9 +14,9 @@
+ 
+ DECLARE_GLOBAL_DATA_PTR;
+ 
+-void set_back_to_bootrom_dnl_flag(void)
++void set_bootmode_flag(int mode)
+ {
+-	writel(BOOT_BROM_DOWNLOAD, CONFIG_ROCKCHIP_BOOT_MODE_REG);
++	writel(mode, CONFIG_ROCKCHIP_BOOT_MODE_REG);
+ }
+ 
+ /*
+@@ -54,15 +54,45 @@
+ 		return false;
+ }
+ 
++int rockchip_dnl_mode()
++{
++	int mode = 0;
++
++	// Arbitrary wait loop... wait about 4 seconds before entering RockUsb mode
++	for (int i = 0; i < 200; ++i) {
++		if (!rockchip_dnl_key_pressed()) {
++			mode++;
++			break;
++		}
++		mdelay(20);
++	}
++
++	return mode;
++}
++
+ void rockchip_dnl_mode_check(void)
+ {
+-	if (rockchip_dnl_key_pressed()) {
+-		printf("download key pressed, entering download mode...\n");
+-		/* If failed, we fall back to bootrom download mode */
++	// Check if recovery key was pressed
++	if (!rockchip_dnl_key_pressed()) {
++		// Recovery key isn't pressed
++		return 0;
++	}
++
++	printf("Recovery key pressed. Release key to enter MaskRom mode, or keep pressed to enter RockUsb mode...\n");
++
++	switch(rockchip_dnl_mode()) {
++	case 0:
++		printf("Entering RockUsb mode...\n");
+ 		cli_simple_run_command("rockusb 0 mmc 0", 0);
+-		set_back_to_bootrom_dnl_flag();
+-		do_reset(NULL, 0, 0, NULL);
++		set_bootmode_flag(BOOT_LOADER);
++		break;
++	case 1:
++		printf("Entering MaskRom mode...\n");
++		set_bootmode_flag(BOOT_BROM_DOWNLOAD);
++		break;
+ 	}
++	
++	do_reset(NULL, 0, 0, NULL);
+ }
+ 
+ int setup_boot_mode(void)
+@@ -77,12 +107,15 @@
+ 
+ 	boot_mode = readl(reg);
+ 
+-	debug("boot mode %x.\n", boot_mode);
++	debug("Boot mode flag: %x\n", boot_mode);
+ 
+ 	/* Clear boot mode */
+ 	writel(BOOT_NORMAL, reg);
+ 
+ 	switch (boot_mode) {
++	case BOOT_NORMAL:
++		printf("Normal boot\n");
++		break;
+ 	case BOOT_FASTBOOT:
+ 		printf("enter fastboot!\n");
+ #if defined(CONFIG_FASTBOOT_FLASH_MMC_DEV)
+diff -Naur a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+--- a/arch/arm/mach-rockchip/Kconfig	2017-12-14 07:42:09.000000000 +0100
++++ b/arch/arm/mach-rockchip/Kconfig	2018-01-12 16:09:31.960232898 +0100
+@@ -238,6 +238,7 @@
+ 	default 0x20004040 if ROCKCHIP_RK3188
+ 	default 0x110005c8 if ROCKCHIP_RK322X
+ 	default 0xff730094 if ROCKCHIP_RK3288
++	default 0xff1005c8 if ROCKCHIP_RK3328
+ 	default 0xff738200 if ROCKCHIP_RK3368
+ 	default 0xff320300 if ROCKCHIP_RK3399
+ 	default 0x10300580 if ROCKCHIP_RV1108
+diff -Naur a/arch/arm/mach-rockchip/rk3328/Kconfig b/arch/arm/mach-rockchip/rk3328/Kconfig
+--- a/arch/arm/mach-rockchip/rk3328/Kconfig	2017-12-14 07:42:09.000000000 +0100
++++ b/arch/arm/mach-rockchip/rk3328/Kconfig	2018-01-12 15:33:17.205688619 +0100
+@@ -5,6 +5,7 @@
+ 
+ config TARGET_EVB_RK3328
+ 	bool "RK3328 evaluation board"
++	select BOARD_LATE_INIT
+ 	help
+ 	  RK3328evb is a evaluation board for Rockchip rk3328,
+ 	  with full function and phisical connectors support like
+diff -Naur a/arch/arm/mach-rockchip/rk3328/rk3328.c b/arch/arm/mach-rockchip/rk3328/rk3328.c
+--- a/arch/arm/mach-rockchip/rk3328/rk3328.c	2017-12-14 07:42:09.000000000 +0100
++++ b/arch/arm/mach-rockchip/rk3328/rk3328.c	2018-01-12 16:24:50.000000000 +0100
+@@ -6,8 +6,12 @@
+ 
+ #include <common.h>
+ #include <asm/arch/hardware.h>
++#include <asm/arch/boot_mode.h>
++#include <asm/arch/clock.h>
++#include <asm/arch/grf_rk3328.h>
+ #include <asm/armv8/mmu.h>
+ #include <asm/io.h>
++#include <syscon.h>
+ 
+ DECLARE_GLOBAL_DATA_PTR;
+ 
+@@ -61,3 +65,30 @@
+ 
+ 	return 0;
+ }
++
++static void boot_mode_set(int boot_mode)
++{
++	struct rk3328_grf_regs *grf = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
++	writel(boot_mode, &grf->os_reg[0]);
++}
++
++#if defined(CONFIG_USB_FUNCTION_FASTBOOT)
++int fb_set_reboot_flag(void)
++{
++	printf("Setting reboot to fastboot flag ...\n");
++	boot_mode_set(BOOT_FASTBOOT);
++	return 0;
++}
++#endif
++
++__weak int rk_board_late_init(void)
++{
++	return 0;
++}
++
++int board_late_init(void)
++{
++	setup_boot_mode();
++	return rk_board_late_init();
++}
++
