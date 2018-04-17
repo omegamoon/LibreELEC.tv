@@ -82,21 +82,31 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" ]; then
     fi
   fi
 
-  if [ ! -d $BUILD/$PKG_NAME-$PKG_VERSION ]; then
+  if [ "x$PKG_BUILD_PER_DEVICE" == "xyes" ]; then
+    if [ -z "$DEVICE_MODEL" ]; then
+      PKG_DIR_NAME="${PKG_NAME}-${DEVICE}-${PKG_VERSION}"
+    else
+      PKG_DIR_NAME="${PKG_NAME}-${DEVICE}-${DEVICE_MODEL}-${PKG_VERSION}"
+    fi
+  else
+    PKG_DIR_NAME="${PKG_NAME}-${PKG_VERSION}"
+  fi
+
+  if [ ! -d $BUILD/$PKG_DIR_NAME ]; then
     if [ -n "$PKG_SOURCE_DIR" ]; then
-      mv $BUILD/$PKG_SOURCE_DIR $BUILD/$PKG_NAME-$PKG_VERSION
+      mv $BUILD/$PKG_SOURCE_DIR $BUILD/$PKG_DIR_NAME
     elif [ -d $BUILD/$PKG_NAME-$PKG_VERSION* ]; then
-      mv $BUILD/$PKG_NAME-$PKG_VERSION* $BUILD/$PKG_NAME-$PKG_VERSION
+      mv $BUILD/$PKG_NAME-$PKG_VERSION* $BUILD/$PKG_DIR_NAME
     fi
   fi
 
   if [ -d "$PKG_DIR/sources" ]; then
-    [ ! -d "$BUILD/${PKG_NAME}-${PKG_VERSION}" ] && mkdir -p $BUILD/${PKG_NAME}-${PKG_VERSION}
-    cp -PRf $PKG_DIR/sources/* $BUILD/${PKG_NAME}-${PKG_VERSION}
+    [ ! -d "$BUILD/${PKG_DIR_NAME}" ] && mkdir -p $BUILD/$PKG_DIR_NAME
+    cp -PRf $PKG_DIR/sources/* $BUILD/$PKG_DIR_NAME
   fi
 
   if [ -z "$PKG_URL" ]; then
-    mkdir -p "${BUILD}/${PKG_NAME}-${PKG_VERSION}"
+    mkdir -p "${BUILD}/${PKG_DIR_NAME}"
   fi
 
   if [ "$(type -t post_unpack)" = "function" ]; then

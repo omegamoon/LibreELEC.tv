@@ -39,6 +39,7 @@ case "$PROJECT" in
     PKG_PATCH_DIRS="rockchip"
     PKG_DEPENDS_TARGET+=" rkbin"
     PKG_NEED_UNPACK+=" $(get_pkg_directory rkbin)"
+    PKG_BUILD_PER_DEVICE="yes"
     ;;
   *)
     PKG_VERSION="2017.09"

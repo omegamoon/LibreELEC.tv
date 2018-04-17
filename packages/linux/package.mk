@@ -53,6 +53,7 @@ case "$LINUX" in
     PKG_SHA256="be8403f4908bf6a5c5c45ec01113dae489db12d3bcb77eae53e5b080f4e3c1b8"
     PKG_URL="https://github.com/rockchip-linux/kernel/archive/$PKG_VERSION.tar.gz"
     PKG_SOURCE_DIR="kernel-$PKG_VERSION"
+    PKG_BUILD_PER_DEVICE="yes"
     ;;
   raspberrypi)
     PKG_VERSION="81dda1af754c3af667944af7156bf1c5cdf9beee" # 4.14.30

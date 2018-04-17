@@ -28,6 +28,7 @@ PKG_SECTION="graphics"
 PKG_SHORTDESC="mali-rockchip: OpenGL ES user-space binary for the ARM Mali GPU family"
 PKG_LONGDESC="mali-rockchip: OpenGL ES user-space binary for the ARM Mali GPU family"
 PKG_TOOLCHAIN="manual"
+PKG_BUILD_PER_DEVICE="yes"
 
 if [ "$TARGET_ARCH" = "arm" ]; then
   PKG_MALI_ARCH="arm-linux-gnueabihf"
