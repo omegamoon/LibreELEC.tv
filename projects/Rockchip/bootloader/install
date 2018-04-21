@@ -30,12 +30,12 @@ case "$PKG_SOC" in
     ;;
   rk3328)
     PKG_DATAFILE="$PKG_RKBIN/rk33/rk3328_ddr_786MHz_v1.12.bin"
-    PKG_LOADER="$PKG_RKBIN/rk33/rk3328_miniloader_v2.44.bin"
+    PKG_LOADER="$PKG_RKBIN/rk33/rk3328_miniloader_v2.46.bin"
     PKG_BL31="$PKG_RKBIN/rk33/rk3328_bl31_v1.39.bin"
     ;;
   rk3399)
-    PKG_DATAFILE="$PKG_RKBIN/rk33/rk3399_ddr_800MHz_v1.09.bin"
-    PKG_LOADER="$PKG_RKBIN/rk33/rk3399_miniloader_v1.09.bin"
+    PKG_DATAFILE="$PKG_RKBIN/rk33/rk3399_ddr_800MHz_v1.10.bin"
+    PKG_LOADER="$PKG_RKBIN/rk33/rk3399_miniloader_v1.12.bin"
     PKG_BL31="$PKG_RKBIN/rk33/rk3399_bl31_v1.00.elf"
     ;;
   *)
