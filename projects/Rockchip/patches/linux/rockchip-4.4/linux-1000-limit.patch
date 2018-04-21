@@ -1,0 +1,49 @@
+From bfa60b852e4ffea76423da5d35b9b35f6ad67156 Mon Sep 17 00:00:00 2001
+From: Jonas Karlman <jonas@kwiboo.se>
+Date: Sat, 21 Apr 2018 12:52:58 +0200
+Subject: [PATCH] drm/rockchip: skip 4K 50/60Hz clocks for RK3328
+
+---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 6f83acd25ce5..0fd07d3b3893 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -517,6 +517,10 @@ dw_hdmi_rockchip_mode_valid(struct drm_connector *connector,
+ 	if (hdmi->dev_type == RK3288_HDMI && (mode->clock < 27500 || mode->clock > 340000))
+ 		return MODE_CLOCK_RANGE;
+ 
++	/* Skip 4K 50/60Hz clocks for RK3328 */
++	if (hdmi->dev_type == RK3328_HDMI && mode->clock > 340000)
++		return MODE_CLOCK_RANGE;
++
+ 	/*
+ 	 * ensure all drm display mode can work, if someone want support more
+ 	 * resolutions, please limit the possible_crtc, only connect to
+
+From 365f50ef3b8c7af9bfb60ac6415df1e87ac0d061 Mon Sep 17 00:00:00 2001
+From: Jonas Karlman <jonas@kwiboo.se>
+Date: Sat, 21 Apr 2018 12:53:04 +0200
+Subject: [PATCH] drm/rockchip: skip 4K 50/60Hz clocks for RK3399
+
+---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 0fd07d3b3893..b22e7a67024f 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -521,6 +521,10 @@ dw_hdmi_rockchip_mode_valid(struct drm_connector *connector,
+ 	if (hdmi->dev_type == RK3328_HDMI && mode->clock > 340000)
+ 		return MODE_CLOCK_RANGE;
+ 
++	/* Skip 4K 50/60Hz clocks for RK3399 */
++	if (hdmi->dev_type == RK3399_HDMI && mode->clock > 340000)
++		return MODE_CLOCK_RANGE;
++
+ 	/*
+ 	 * ensure all drm display mode can work, if someone want support more
+ 	 * resolutions, please limit the possible_crtc, only connect to

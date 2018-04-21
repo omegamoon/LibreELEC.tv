@@ -1,4 +1,4 @@
-From 3ab7c88ff74eb4f8f1eb9a8d4e27661a8e8f2103 Mon Sep 17 00:00:00 2001
+From 50e023938c76ef6ec0c691eb1b5a1fd3689fcfa0 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 29 Mar 2017 23:51:09 +0200
 Subject: [PATCH] gpu/arm/midgard: default to performance gpu governor
@@ -9,10 +9,10 @@ Subject: [PATCH] gpu/arm/midgard: default to performance gpu governor
  2 files changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/gpu/arm/midgard_for_linux/backend/gpu/mali_kbase_devfreq.c b/drivers/gpu/arm/midgard_for_linux/backend/gpu/mali_kbase_devfreq.c
-index 69b13ddad95f..6f3b654cd3fd 100644
+index 1fb28302d7c2..a041e2267b03 100644
 --- a/drivers/gpu/arm/midgard_for_linux/backend/gpu/mali_kbase_devfreq.c
 +++ b/drivers/gpu/arm/midgard_for_linux/backend/gpu/mali_kbase_devfreq.c
-@@ -213,8 +213,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
+@@ -217,8 +217,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
  	dp = &kbdev->devfreq_profile;
  
  	dp->initial_freq = kbdev->current_freq;
@@ -22,7 +22,7 @@ index 69b13ddad95f..6f3b654cd3fd 100644
  	dp->target = kbase_devfreq_target;
  	dp->get_dev_status = kbase_devfreq_status;
  	dp->get_cur_freq = kbase_devfreq_cur_freq;
-@@ -229,8 +228,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
+@@ -233,8 +232,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
  			     &kbdev->ondemand_data.downdifferential);
  
  	kbdev->devfreq = devfreq_add_device(kbdev->dev, dp,
@@ -47,7 +47,7 @@ index 9b00cce9b2b3..739ac83b484f 100644
  /*
   * Power Management poweroff tick granuality. This is in nanoseconds to
 
-From c49efbd36cf0b4d676adee155d3c68862c93d400 Mon Sep 17 00:00:00 2001
+From aa9d86404a635a293a85c912779079312c3781c2 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Mon, 17 Apr 2017 13:09:16 +0200
 Subject: [PATCH] sound/usb/quirks-table: add Realtek ALC4040
@@ -57,10 +57,10 @@ Subject: [PATCH] sound/usb/quirks-table: add Realtek ALC4040
  1 file changed, 9 insertions(+)
 
 diff --git a/sound/usb/quirks-table.h b/sound/usb/quirks-table.h
-index 8a59d4782a0f..96e1e2fdc9c3 100644
+index 69bf5cf1e91e..00672a818145 100644
 --- a/sound/usb/quirks-table.h
 +++ b/sound/usb/quirks-table.h
-@@ -3277,4 +3277,13 @@ AU0828_DEVICE(0x2040, 0x7270, "Hauppauge", "HVR-950Q"),
+@@ -3324,4 +3324,13 @@ AU0828_DEVICE(0x2040, 0x7270, "Hauppauge", "HVR-950Q"),
  	}
  },
  
@@ -75,7 +75,7 @@ index 8a59d4782a0f..96e1e2fdc9c3 100644
 +
  #undef USB_DEVICE_VENDOR_SPEC
 
-From 9224460a1f2208076d8b67454603db5415dcb992 Mon Sep 17 00:00:00 2001
+From fc692d1eb5a43aba9fe3c480c6f6f6837188113a Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 28 May 2017 09:08:50 +0200
 Subject: [PATCH] gpu/arm/mali400: default to performance gpu governor
@@ -85,10 +85,10 @@ Subject: [PATCH] gpu/arm/mali400: default to performance gpu governor
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/arm/mali400/mali/linux/mali_devfreq.c b/drivers/gpu/arm/mali400/mali/linux/mali_devfreq.c
-index 3eac07d76766..14916ea86905 100644
+index 6e2d29a1e29e..5f5426d335e4 100644
 --- a/drivers/gpu/arm/mali400/mali/linux/mali_devfreq.c
 +++ b/drivers/gpu/arm/mali400/mali/linux/mali_devfreq.c
-@@ -249,7 +249,7 @@ int mali_devfreq_init(struct mali_device *mdev)
+@@ -253,7 +253,7 @@ int mali_devfreq_init(struct mali_device *mdev)
  		return -EFAULT;
  
  	mdev->devfreq = devfreq_add_device(mdev->dev, dp,
@@ -98,20 +98,20 @@ index 3eac07d76766..14916ea86905 100644
  		mali_devfreq_term_freq_table(mdev);
  		return PTR_ERR(mdev->devfreq);
 
-From 2d2af9eb328f709fc6b8bc63c42699dd22932e3e Mon Sep 17 00:00:00 2001
+From bd2d27c6c8e35d1bf1aecb308bd27eef0c9ba950 Mon Sep 17 00:00:00 2001
 From: LongChair <LongChair@hotmail.com>
 Date: Fri, 21 Apr 2017 13:39:12 +0200
 Subject: [PATCH] drm/rockchip: remove unsupported 4K freqs
 
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index bdc96cd4253d..b22e7a67024f 100644
+index bdc96cd4253d..6f83acd25ce5 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -508,9 +508,23 @@ dw_hdmi_rockchip_mode_valid(struct drm_connector *connector,
+@@ -508,9 +508,15 @@ dw_hdmi_rockchip_mode_valid(struct drm_connector *connector,
  		return MODE_BAD;
  
  	hdmi = to_rockchip_hdmi(encoder);
@@ -125,19 +125,11 @@ index bdc96cd4253d..b22e7a67024f 100644
 +	if (hdmi->dev_type == RK3288_HDMI && (mode->clock < 27500 || mode->clock > 340000))
 +		return MODE_CLOCK_RANGE;
 +
-+	/* Skip 4K 50/60Hz clocks for RK3328 */
-+	if (hdmi->dev_type == RK3328_HDMI && mode->clock > 340000)
-+		return MODE_CLOCK_RANGE;
-+
-+	/* Skip 4K 50/60Hz clocks for RK3399 */
-+	if (hdmi->dev_type == RK3399_HDMI && mode->clock > 340000)
-+		return MODE_CLOCK_RANGE;
-+
  	/*
  	 * ensure all drm display mode can work, if someone want support more
  	 * resolutions, please limit the possible_crtc, only connect to
 
-From 66db06144315ec2212c9724f57291acadeffe8d8 Mon Sep 17 00:00:00 2001
+From e1685c0ab10c3ec66bcf1946ae8aacb71e30788e Mon Sep 17 00:00:00 2001
 From: xuhuicong <xhc@rock-chips.com>
 Date: Fri, 23 Jun 2017 18:56:17 +0800
 Subject: [PATCH] drm/rockchip: hdmi: fix no sound some time
@@ -149,10 +141,10 @@ Signed-off-by: xuhuicong <xhc@rock-chips.com>
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index a7f2e381a5bd..df2f72fbf93a 100644
+index 5ed021b432c5..8071afa4e271 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -1981,10 +1981,6 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+@@ -1991,10 +1991,6 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
  		HDMI_FC_INVIDCONF_IN_I_P_INTERLACED :
  		HDMI_FC_INVIDCONF_IN_I_P_PROGRESSIVE;
  
@@ -163,7 +155,7 @@ index a7f2e381a5bd..df2f72fbf93a 100644
  	hdmi_writeb(hdmi, inv_val, HDMI_FC_INVIDCONF);
  
  	hdisplay = mode->hdisplay;
-@@ -2282,6 +2278,9 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+@@ -2292,6 +2288,9 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
  	/* not for DVI mode */
  	if (hdmi->sink_is_hdmi) {
  		dev_dbg(hdmi->dev, "%s HDMI mode\n", __func__);
@@ -174,7 +166,7 @@ index a7f2e381a5bd..df2f72fbf93a 100644
  		/* HDMI Initialization Step F - Configure AVI InfoFrame */
  		hdmi_config_AVI(hdmi, mode);
 
-From 61d75a50a3eb5c9f7894d102749c1aed2cb69db8 Mon Sep 17 00:00:00 2001
+From b0d99783b0a890eac9cc6317f45e29b2c04807c0 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Fri, 25 Aug 2017 18:29:35 +0200
 Subject: [PATCH] video: rockchip: vpu: partial revise for rk322xh feature
@@ -184,10 +176,10 @@ Subject: [PATCH] video: rockchip: vpu: partial revise for rk322xh feature
  1 file changed, 3 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/video/rockchip/vcodec/vcodec_service.c b/drivers/video/rockchip/vcodec/vcodec_service.c
-index 9236c5e93215..bdc4722f4e3a 100644
+index 452daf9efd73..267ec0a29278 100644
 --- a/drivers/video/rockchip/vcodec/vcodec_service.c
 +++ b/drivers/video/rockchip/vcodec/vcodec_service.c
-@@ -3630,21 +3630,15 @@ static irqreturn_t vdpu_irq(int irq, void *dev_id)
+@@ -3675,21 +3675,15 @@ static irqreturn_t vdpu_irq(int irq, void *dev_id)
  		time_record(task, 1);
  		vpu_debug(DEBUG_IRQ_STATUS, "vdpu_irq dec status %08x\n",
  			  dec_status);
@@ -213,7 +205,7 @@ index 9236c5e93215..bdc4722f4e3a 100644
  		time_diff(task);
  		pservice->irq_status = raw_status;
 
-From 336b80f1b8830171de634f41d29f6153a8ccac14 Mon Sep 17 00:00:00 2001
+From 4b3473859ffb2ec874fd53815e49c11886278343 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Mon, 2 Oct 2017 21:53:19 +0200
 Subject: [PATCH] drm/rockchip: use limited range
@@ -223,7 +215,7 @@ Subject: [PATCH] drm/rockchip: use limited range
  1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index df2f72fbf93a..f603eeadaa1b 100644
+index 8071afa4e271..fbeaecd0477d 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 @@ -147,6 +147,12 @@ static const u16 csc_coeff_rgb_in_eitu709[3][4] = {
@@ -239,7 +231,7 @@ index df2f72fbf93a..f603eeadaa1b 100644
  struct hdmi_vmode {
  	bool mdataenablepolarity;
  
-@@ -996,7 +1002,9 @@ static void hdmi_video_sample(struct dw_hdmi *hdmi)
+@@ -1006,7 +1012,9 @@ static void hdmi_video_sample(struct dw_hdmi *hdmi)
  
  static int is_color_space_conversion(struct dw_hdmi *hdmi)
  {
@@ -250,7 +242,7 @@ index df2f72fbf93a..f603eeadaa1b 100644
  }
  
  static int is_color_space_decimation(struct dw_hdmi *hdmi)
-@@ -1030,7 +1038,11 @@ static void dw_hdmi_update_csc_coeffs(struct dw_hdmi *hdmi)
+@@ -1040,7 +1048,11 @@ static void dw_hdmi_update_csc_coeffs(struct dw_hdmi *hdmi)
  	u32 csc_scale = 1;
  
  	if (is_color_space_conversion(hdmi)) {
@@ -264,7 +256,7 @@ index df2f72fbf93a..f603eeadaa1b 100644
  						V4L2_YCBCR_ENC_601)
  				csc_coeff = &csc_coeff_rgb_out_eitu601;
 
-From 63c7038ff1424b8362ccaa5c8c5907ed285284fc Mon Sep 17 00:00:00 2001
+From 921aeac0474baa64feb3476d91ae37e1461b5b3b Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 18 Nov 2017 11:09:39 +0100
 Subject: [PATCH] rockchip: vop: force skip lines if image too big
@@ -274,10 +266,10 @@ Subject: [PATCH] rockchip: vop: force skip lines if image too big
  1 file changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 3e6798b4b821..23516a195261 100644
+index a4a00ebbce12..e278c5103277 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1584,6 +1584,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+@@ -1624,6 +1624,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
  	int ymirror, xmirror;
  	uint32_t val;
  	bool rb_swap, global_alpha_en;
@@ -285,7 +277,7 @@ index 3e6798b4b821..23516a195261 100644
  
  	/*
  	 * can't update plane when vop is disabled.
-@@ -1597,8 +1598,14 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+@@ -1637,8 +1638,14 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
  	}
  
  	mode = &crtc->state->adjusted_mode;
@@ -301,7 +293,7 @@ index 3e6798b4b821..23516a195261 100644
  	act_info = (actual_h - 1) << 16 | ((actual_w - 1) & 0xffff);
  
  	dsp_info = (drm_rect_height(dest) - 1) << 16;
-@@ -1620,10 +1627,10 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+@@ -1660,10 +1667,10 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
  	VOP_WIN_SET(vop, win, xmirror, xmirror);
  	VOP_WIN_SET(vop, win, ymirror, ymirror);
  	VOP_WIN_SET(vop, win, format, vop_plane_state->format);
@@ -315,7 +307,7 @@ index 3e6798b4b821..23516a195261 100644
  	}
  	VOP_WIN_SET(vop, win, fmt_10, is_yuv_10bit(fb->pixel_format));
 
-From 2fef240b349e8adbf74f672a2203453839a59ee2 Mon Sep 17 00:00:00 2001
+From f54fd88ae79928078fecb257a4c9507bb5a31647 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 18 Nov 2017 23:17:24 +0100
 Subject: [PATCH] gpu/arm/midgard: default to performance gpu governor
@@ -326,10 +318,10 @@ Subject: [PATCH] gpu/arm/midgard: default to performance gpu governor
  2 files changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/arm/midgard/backend/gpu/mali_kbase_devfreq.c b/drivers/gpu/arm/midgard/backend/gpu/mali_kbase_devfreq.c
-index 0bf5fcd21c03..e578bd0f92dd 100644
+index 3510a98c25c6..b57e488ee50b 100644
 --- a/drivers/gpu/arm/midgard/backend/gpu/mali_kbase_devfreq.c
 +++ b/drivers/gpu/arm/midgard/backend/gpu/mali_kbase_devfreq.c
-@@ -232,8 +232,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
+@@ -235,8 +235,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
  	dp = &kbdev->devfreq_profile;
  
  	dp->initial_freq = kbdev->current_freq;
@@ -339,7 +331,7 @@ index 0bf5fcd21c03..e578bd0f92dd 100644
  	dp->target = kbase_devfreq_target;
  	dp->get_dev_status = kbase_devfreq_status;
  	dp->get_cur_freq = kbase_devfreq_cur_freq;
-@@ -243,7 +242,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
+@@ -246,7 +245,7 @@ int kbase_devfreq_init(struct kbase_device *kbdev)
  		return -EFAULT;
  
  	kbdev->devfreq = devfreq_add_device(kbdev->dev, dp,
@@ -363,7 +355,7 @@ index e674cc2ea183..0f11388acfd7 100644
  /*
   * Power Management poweroff tick granuality. This is in nanoseconds to
 
-From 0dbe82f20d885716f74242621fe96a914db03064 Mon Sep 17 00:00:00 2001
+From f35592c772de34d747fd593edb2cb1231a500087 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 10 Dec 2017 14:16:09 +0100
 Subject: [PATCH] uapi: install rockchip_drm header
@@ -385,7 +377,7 @@ index 38d437096c35..b7ae9969d41e 100644
  header-y += sis_drm.h
  header-y += tegra_drm.h
 
-From f166ba88945f1ea7ff327bb9f22f53aed728dde3 Mon Sep 17 00:00:00 2001
+From 6b5f7ea7016cea9c615ceb07dec554b767a0c075 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 10 Dec 2017 18:03:53 +0100
 Subject: [PATCH] phy: rockchip-inno-hdmi-phy: add vesa dmt pixel clocks
@@ -395,10 +387,10 @@ Subject: [PATCH] phy: rockchip-inno-hdmi-phy: add vesa dmt pixel clocks
  1 file changed, 71 insertions(+)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi-phy.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi-phy.c
-index ca50c8f58c50..2455c87ab5d8 100644
+index d17c7a143d9c..d2fec4e872f8 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi-phy.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi-phy.c
-@@ -245,6 +245,77 @@ static const struct pre_pll_config pre_pll_cfg_table[] = {
+@@ -254,6 +254,77 @@ static const struct pre_pll_config pre_pll_cfg_table[] = {
  	{594000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1, 1, 1, 0},
  	{593407000, 593407000, 1,  98, 0, 2, 0,  1, 0, 1, 1, 0, 0xE6AE6B},
  	{594000000, 594000000, 1,  99, 0, 2, 0,  1, 0, 1, 1, 0, 0},
@@ -477,7 +469,7 @@ index ca50c8f58c50..2455c87ab5d8 100644
  };
  
 
-From 1a99dae778ad3402f8283aa19b27ea606fdfcd4c Mon Sep 17 00:00:00 2001
+From 7bfab668b6c5511c3b024f616f9ee488ce92dbc0 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Tue, 12 Dec 2017 00:37:27 +0100
 Subject: [PATCH] clk: rockchip: fix round rate
@@ -487,10 +479,10 @@ Subject: [PATCH] clk: rockchip: fix round rate
  1 file changed, 11 insertions(+)
 
 diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 80d1d4095f2e..e4f64087aa78 100644
+index 3d6a241bca8b..2e2fc0b22460 100644
 --- a/drivers/clk/rockchip/clk-pll.c
 +++ b/drivers/clk/rockchip/clk-pll.c
-@@ -299,6 +299,17 @@ static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
+@@ -324,6 +324,17 @@ static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
  static long rockchip_pll_round_rate(struct clk_hw *hw,
  			    unsigned long drate, unsigned long *prate)
  {
@@ -509,7 +501,7 @@ index 80d1d4095f2e..e4f64087aa78 100644
  }
  
 
-From 6e9921f5c0511283de78b221cc204d6aad53e68f Mon Sep 17 00:00:00 2001
+From 637fefbdfc245a77f4380bb46ef79135dbb503f2 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 21 Jan 2018 17:20:00 +0100
 Subject: [PATCH] drm: fix HDR metadata infoframe length
@@ -526,10 +518,10 @@ Fixes activation of HDR mode on my LG OLED
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index f603eeadaa1b..affba6ab8163 100644
+index fbeaecd0477d..cb206c5c60bc 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -1859,7 +1859,7 @@ static void hdmi_config_hdr_infoframe(struct dw_hdmi *hdmi)
+@@ -1869,7 +1869,7 @@ static void hdmi_config_hdr_infoframe(struct dw_hdmi *hdmi)
  		return;
  	}
  
@@ -539,10 +531,10 @@ index f603eeadaa1b..affba6ab8163 100644
  	hdmi_writeb(hdmi, frame.eotf, HDMI_FC_DRM_PB0);
  	hdmi_writeb(hdmi, frame.metadata_type, HDMI_FC_DRM_PB1);
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 3e3ebdf34e9f..d06786a58ca1 100644
+index bfe671071d9f..e3a0f561e8f0 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -4727,10 +4727,10 @@ drm_hdmi_infoframe_set_hdr_metadata(struct hdmi_drm_infoframe *frame,
+@@ -4735,10 +4735,10 @@ drm_hdmi_infoframe_set_hdr_metadata(struct hdmi_drm_infoframe *frame,
  
  	hdr_source_metadata = (struct hdr_static_metadata *)hdr_metadata;
  
@@ -556,7 +548,7 @@ index 3e3ebdf34e9f..d06786a58ca1 100644
  	for (i = 0; i < 3; i++) {
  		frame->display_primaries_x[i] =
 
-From 83b81c3876baf020491ee497f637b01c45eef059 Mon Sep 17 00:00:00 2001
+From a3c778721f1bb8ef4f0a8657c65be08e7261f7e1 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sat, 27 Jan 2018 09:39:09 +0100
 Subject: [PATCH] drm: add edid detection for Hybrid Log-Gamma EOTF
@@ -566,10 +558,10 @@ Subject: [PATCH] drm: add edid detection for Hybrid Log-Gamma EOTF
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index d06786a58ca1..bfd64112178a 100644
+index e3a0f561e8f0..f7d41950614e 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -2737,7 +2737,7 @@ add_detailed_modes(struct drm_connector *connector, struct edid *edid,
+@@ -2740,7 +2740,7 @@ add_detailed_modes(struct drm_connector *connector, struct edid *edid,
  #define TRADITIONAL_GAMMA_SDR          (0x1 << 0)
  #define TRADITIONAL_GAMMA_HDR          (0x1 << 1)
  #define SMPTE_ST2084                   (0x1 << 2)
@@ -578,7 +570,7 @@ index d06786a58ca1..bfd64112178a 100644
  #define RESERVED_EOTF                  (0x3 << 4)
  
  #define STATIC_METADATA_TYPE1          (0x1 << 0)
-@@ -3707,6 +3707,8 @@ static uint16_t eotf_supported(const u8 *edid_ext)
+@@ -3710,6 +3710,8 @@ static uint16_t eotf_supported(const u8 *edid_ext)
  		val |= TRADITIONAL_GAMMA_HDR;
  	if (edid_ext[2] & SMPTE_ST2084)
  		val |= SMPTE_ST2084;
@@ -588,7 +580,7 @@ index d06786a58ca1..bfd64112178a 100644
  	return val;
  }
 
-From 9a00f6e3bc2a7d6f3c3783f98bf3b142a1445f00 Mon Sep 17 00:00:00 2001
+From 1efd7664450bbed3ee96f39cbb90a15b03488326 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 11 Feb 2018 19:21:41 +0100
 Subject: [PATCH] drm: bridge: dw-hdmi: default to underscan mode
@@ -598,10 +590,10 @@ Subject: [PATCH] drm: bridge: dw-hdmi: default to underscan mode
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index affba6ab8163..1c55ff385ce4 100644
+index cb206c5c60bc..5ca2b97aa9bf 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -1693,7 +1693,7 @@ static void hdmi_config_AVI(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+@@ -1703,7 +1703,7 @@ static void hdmi_config_AVI(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
  		break;
  	}
  
@@ -611,7 +603,7 @@ index affba6ab8163..1c55ff385ce4 100644
  	/*
  	 * The Designware IP uses a different byte format from standard
 
-From 8076bb526d8c6d19006d460e2f904afafdf019e2 Mon Sep 17 00:00:00 2001
+From 6f245447f0cf895f783db3bdcbbd696d435d6396 Mon Sep 17 00:00:00 2001
 From: David Carrillo-Cisneros <davidcc@google.com>
 Date: Tue, 18 Jul 2017 18:18:37 -0700
 Subject: [PATCH] UPSTREAM: perf tools: Add EXCLUDE_EXTLIBS and EXTRA_PERFLIBS
@@ -671,7 +663,7 @@ index fb1c9ddc3478..9b3b9bd50d54 100644
  export INSTALL SHELL_PATH
  
 
-From 8fb0d8531aece502c4cc3a82077ace8c09b4918a Mon Sep 17 00:00:00 2001
+From 084fa325e7a745daf2af690aeed93004d0a4a831 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Tue, 27 Feb 2018 20:49:00 +0100
 Subject: [PATCH] net: wireless: rockchip_wlan: rtl8723bs: do not accept all
@@ -710,7 +702,7 @@ index 0c03f775eb7f..45533aacecdc 100644
  #endif
  #ifdef CONFIG_RTL8188E
 
-From dced379ed8ce510bbf781704e6ff32557fa0950c Mon Sep 17 00:00:00 2001
+From f19490e6c63213c3b079d0b6061a22d8a04a2514 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Fri, 2 Mar 2018 20:53:32 +0100
 Subject: [PATCH] net: wireless: rockchip_wlan: bcmdhd: detect broadcom sdio
@@ -733,3 +725,31 @@ index 8864582b1706..b5a388cc3cbe 100755
  	{ 0, 0, 0, 0 /* end: all zeroes */
  	},
  };
+
+From 756778b00f030371b05dd61ff06ac8f987073062 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>
+Date: Thu, 29 Mar 2018 11:16:00 +0200
+Subject: [PATCH] ayufan: rockchip-spi fails when high_speed pinctrl is missing
+
+Change-Id: If3ccd1ab75ba2baf1dc4558ae2a65b2a78da4a59
+---
+ drivers/spi/spi-rockchip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 060806eaf8d6..215200d5786c 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -777,10 +777,10 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 
+ 	rs->high_speed_state = pinctrl_lookup_state(rs->dev->pins->p,
+ 						     "high_speed");
+-	if (IS_ERR_OR_NULL(rs->high_speed_state))
++	if (IS_ERR_OR_NULL(rs->high_speed_state)) {
+ 		dev_warn(&pdev->dev, "no high_speed pinctrl state\n");
+-	else
+ 		rs->high_speed_state = NULL;
++	}
+ 
+ 	ret = devm_spi_register_master(&pdev->dev, master);
+ 	if (ret) {

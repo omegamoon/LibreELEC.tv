@@ -1,4 +1,4 @@
-From 7b26b6c4eef43138c3c014ce4d185745bc9a0174 Mon Sep 17 00:00:00 2001
+From 68a6d2237792e8a8e471238890816cda4f23f479 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 13 Aug 2017 10:24:19 +0200
 Subject: [PATCH] arm: dts: rk3288-miniarm: update dts
@@ -8,10 +8,10 @@ Subject: [PATCH] arm: dts: rk3288-miniarm: update dts
  1 file changed, 20 insertions(+), 6 deletions(-)
 
 diff --git a/arch/arm/boot/dts/rk3288-miniarm.dts b/arch/arm/boot/dts/rk3288-miniarm.dts
-index 2fbec41f0b23..3d2507b8c864 100644
+index 8f3c406de0da..19afb316a7c7 100644
 --- a/arch/arm/boot/dts/rk3288-miniarm.dts
 +++ b/arch/arm/boot/dts/rk3288-miniarm.dts
-@@ -66,7 +66,7 @@
+@@ -67,7 +67,7 @@
  	wireless-wlan {
  		compatible = "wlan-platdata";
  		rockchip,grf = <&grf>;
@@ -20,7 +20,7 @@ index 2fbec41f0b23..3d2507b8c864 100644
  		sdio_vref = <1800>;
  		WIFI,host_wake_irq = <&gpio4 30 GPIO_ACTIVE_HIGH>;
  		status = "okay";
-@@ -130,14 +130,14 @@
+@@ -131,14 +131,14 @@
  
  		led1-led {
  			gpios=<&gpio1 25 GPIO_ACTIVE_HIGH>;
@@ -37,7 +37,7 @@ index 2fbec41f0b23..3d2507b8c864 100644
  		simple-audio-card,mclk-fs = <512>;
  		simple-audio-card,cpu {
  			sound-dai = <&i2s>;
-@@ -196,20 +196,33 @@
+@@ -197,20 +197,33 @@
  	cpu0-supply = <&vdd_cpu>;
  };
  
@@ -73,7 +73,7 @@ index 2fbec41f0b23..3d2507b8c864 100644
  };
  
  &dsi0 {
-@@ -537,6 +550,7 @@
+@@ -538,6 +551,7 @@
  
  &i2s {
  	#sound-dai-cells = <0>;
@@ -81,7 +81,7 @@ index 2fbec41f0b23..3d2507b8c864 100644
  	status = "okay";
  };
  
-@@ -560,7 +574,7 @@
+@@ -561,7 +575,7 @@
  	non-removable;
  	num-slots = <1>;
  	pinctrl-names = "default";
@@ -91,7 +91,7 @@ index 2fbec41f0b23..3d2507b8c864 100644
  	supports-sdio;
  };
 
-From b550971c44a70aad2dd503c12ea90d67d65fe806 Mon Sep 17 00:00:00 2001
+From 6f4dc6e5b173793d6bacb2d4fc43c303f242706e Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Thu, 2 Nov 2017 23:17:46 +0100
 Subject: [PATCH] arm: dts: rk3288-miqi: update dts
@@ -101,10 +101,10 @@ Subject: [PATCH] arm: dts: rk3288-miqi: update dts
  1 file changed, 33 insertions(+), 23 deletions(-)
 
 diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
-index b90b0e5969ec..ffced204abcf 100644
+index a2862c6a17f1..3f621d887576 100644
 --- a/arch/arm/boot/dts/rk3288-miqi.dts
 +++ b/arch/arm/boot/dts/rk3288-miqi.dts
-@@ -55,29 +55,14 @@
+@@ -56,29 +56,14 @@
  	sound {
  		compatible = "simple-audio-card";
  		simple-audio-card,format = "i2s";
@@ -140,7 +140,7 @@ index b90b0e5969ec..ffced204abcf 100644
  	};
  
  	ext_gmac: external-gmac-clock {
-@@ -181,9 +166,23 @@
+@@ -182,9 +167,23 @@
  	cpu0-supply = <&vdd_cpu>;
  };
  
@@ -164,7 +164,7 @@ index b90b0e5969ec..ffced204abcf 100644
  };
  
  &emmc {
-@@ -203,6 +202,12 @@
+@@ -204,6 +203,12 @@
  	#size-cells = <0>;
  	#sound-dai-cells = <0>;
  	status = "okay";
@@ -177,7 +177,7 @@ index b90b0e5969ec..ffced204abcf 100644
  };
  
  &hevc_service {
-@@ -234,14 +239,14 @@
+@@ -235,14 +240,14 @@
  	clock_in_out = "input";
  	snps,reset-gpio = <&gpio4 7 0>;
  	snps,reset-active-low;
@@ -194,7 +194,7 @@ index b90b0e5969ec..ffced204abcf 100644
  };
  
  /* ----------------------------------------------------------------------------------
-@@ -413,6 +418,7 @@ I2C
+@@ -414,6 +419,7 @@ I2C
  
  &i2s {
  	#sound-dai-cells = <0>;
@@ -202,7 +202,7 @@ index b90b0e5969ec..ffced204abcf 100644
  	status = "okay";
  };
  
-@@ -471,6 +477,10 @@ I2C
+@@ -472,6 +478,10 @@ I2C
  
  &vopl {
  	status = "okay";
@@ -214,17 +214,17 @@ index b90b0e5969ec..ffced204abcf 100644
  
  &vopl_mmu {
 
-From ccb6c0062630f497f3b10e3b35a33085b32da968 Mon Sep 17 00:00:00 2001
+From 917b6ff62f011dcad8ef81d5b18ab837a4b05b7b Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 17 Jan 2018 22:17:45 +0100
 Subject: [PATCH] arm64: dts: rockchip: rk3328: update dtsi
 
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 54 ++++++++++++++++++++++++--------
- 1 file changed, 41 insertions(+), 13 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 63 +++++++++++++++++++++++---------
+ 1 file changed, 46 insertions(+), 17 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index c7316fdd582f..d5ad73bc2932 100644
+index f405673580be..e47457dd7f81 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 @@ -88,6 +88,8 @@
@@ -254,7 +254,7 @@ index c7316fdd582f..d5ad73bc2932 100644
  			enable-method = "psci";
  			operating-points-v2 = <&cpu0_opp_table>;
  		};
-@@ -161,6 +167,18 @@
+@@ -161,6 +167,22 @@
  			opp-microvolt-L1 = <1300000>;
  			clock-latency-ns = <40000>;
  		};
@@ -262,18 +262,22 @@ index c7316fdd582f..d5ad73bc2932 100644
 +		opp-1392000000 {
 +			opp-hz = /bits/ 64 <1392000000>;
 +			opp-microvolt = <1350000>;
++			opp-microvolt-L0 = <1350000>;
++			opp-microvolt-L1 = <1325000>;
 +			clock-latency-ns = <40000>;
 +		};
 +		opp-1512000000 {
 +			opp-hz = /bits/ 64 <1512000000>;
 +			opp-microvolt = <1350000>;
++			opp-microvolt-L0 = <1350000>;
++			opp-microvolt-L1 = <1325000>;
 +			clock-latency-ns = <40000>;
 +		};
 +		*/
  	};
  
  	arm-pmu {
-@@ -186,7 +204,7 @@
+@@ -186,7 +208,7 @@
  	};
  
  	psci {
@@ -282,18 +286,51 @@ index c7316fdd582f..d5ad73bc2932 100644
  		method = "smc";
  	};
  
-@@ -705,6 +723,10 @@
+@@ -454,7 +476,7 @@
+ 		reg = <0x0 0xff120000 0x0 0x100>;
+ 		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+-		clock-names = "sclk_uart", "pclk_uart";
++		clock-names = "baudclk", "apb_pclk";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		dmas = <&dmac 4>, <&dmac 5>;
+@@ -707,15 +729,15 @@
+ 
+ 		opp-200000000 {
+ 			opp-hz = /bits/ 64 <200000000>;
+-			opp-microvolt = <925000>;
+-			opp-microvolt-L0 = <925000>;
+-			opp-microvolt-L1 = <900000>;
++			opp-microvolt = <1050000>;
++			opp-microvolt-L0 = <1050000>;
++			opp-microvolt-L1 = <1025000>;
+ 		};
+ 		opp-300000000 {
+ 			opp-hz = /bits/ 64 <300000000>;
+-			opp-microvolt = <975000>;
+-			opp-microvolt-L0 = <975000>;
+-			opp-microvolt-L1 = <950000>;
++			opp-microvolt = <1050000>;
++			opp-microvolt-L0 = <1050000>;
++			opp-microvolt-L1 = <1025000>;
+ 		};
+ 		opp-400000000 {
+ 			opp-hz = /bits/ 64 <400000000>;
+@@ -729,6 +751,12 @@
  			opp-microvolt-L0 = <1125000>;
  			opp-microvolt-L1 = <1100000>;
  		};
 +		opp-600000000 {
 +			opp-hz = /bits/ 64 <600000000>;
 +			opp-microvolt = <1150000>;
++			opp-microvolt-L0 = <1150000>;
++			opp-microvolt-L1 = <1125000>;
 +		};
  	};
  
  	vdpu: vpu_service@ff350000 {
-@@ -828,7 +850,7 @@
+@@ -852,7 +880,7 @@
  		interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
  		interrupt-names = "rkvdec_mmu";
  		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
@@ -302,30 +339,20 @@ index c7316fdd582f..d5ad73bc2932 100644
  		power-domains = <&power RK3328_PD_VIDEO>;
  		#iommu-cells = <0>;
  	};
-@@ -932,6 +954,8 @@
- 		reg = <0x0 0xff373f00 0x0 0x100>;
- 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "vop_mmu";
-+		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-+		clock-names = "aclk", "hclk";
- 		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -1205,9 +1229,10 @@
+@@ -1233,10 +1261,10 @@
  	sdmmc: dwmmc@ff500000 {
  		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
  		reg = <0x0 0xff500000 0x0 0x4000>;
 -		clock-freq-min-max = <400000 150000000>;
--		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>;
--		clock-names = "biu", "ciu";
 +		max-frequency = <150000000>;
-+		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-+			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
+ 		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
+ 			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
+-		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
 +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
  		fifo-depth = <0x100>;
  		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
  		status = "disabled";
-@@ -1216,10 +1241,10 @@
+@@ -1245,10 +1273,10 @@
  	sdio: dwmmc@ff510000 {
  		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
  		reg = <0x0 0xff510000 0x0 0x4000>;
@@ -338,21 +365,20 @@ index c7316fdd582f..d5ad73bc2932 100644
  		fifo-depth = <0x100>;
  		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
  		status = "disabled";
-@@ -1228,9 +1253,10 @@
+@@ -1257,10 +1285,10 @@
  	emmc: dwmmc@ff520000 {
  		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
  		reg = <0x0 0xff520000 0x0 0x4000>;
 -		clock-freq-min-max = <400000 150000000>;
--		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>;
--		clock-names = "biu", "ciu";
 +		max-frequency = <150000000>;
-+		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
-+			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+ 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+ 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+-		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
 +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
  		fifo-depth = <0x100>;
  		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
  		status = "disabled";
-@@ -1252,6 +1278,7 @@
+@@ -1282,6 +1310,7 @@
  			      "pclk_mac";
  		resets = <&cru SRST_GMAC2IO_A>;
  		reset-names = "stmmaceth";
@@ -360,32 +386,31 @@ index c7316fdd582f..d5ad73bc2932 100644
  		status = "disabled";
  	};
  
-@@ -1322,9 +1349,10 @@
+@@ -1352,10 +1381,10 @@
  	sdmmc_ext: dwmmc@ff5f0000 {
  		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
  		reg = <0x0 0xff5f0000 0x0 0x4000>;
 -		clock-freq-min-max = <400000 150000000>;
--		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>;
--		clock-names = "biu", "ciu";
 +		max-frequency = <150000000>;
-+		clocks = <&cru HCLK_SDMMC_EXT>, <&cru SCLK_SDMMC_EXT>,
-+			 <&cru SCLK_SDMMC_EXT_DRV>, <&cru SCLK_SDMMC_EXT_SAMPLE>;
+ 		clocks = <&cru HCLK_SDMMC_EXT>, <&cru SCLK_SDMMC_EXT>,
+ 			 <&cru SCLK_SDMMC_EXT_DRV>, <&cru SCLK_SDMMC_EXT_SAMPLE>;
+-		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
 +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
  		fifo-depth = <0x100>;
  		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
  		status = "disabled";
 
-From db792f3a20ed76c42048f6c155c308b18bdb9f0d Mon Sep 17 00:00:00 2001
+From e41ed57e64d598f2ae4dad8977c494866143d987 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 17 Jan 2018 22:17:45 +0100
 Subject: [PATCH] arm64: dts: rockchip: rk3328-rock64: update dts
 
 ---
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 215 +++++++++++++++----------
- 1 file changed, 134 insertions(+), 81 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 204 ++++++++++++++++---------
+ 1 file changed, 128 insertions(+), 76 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index b5bb7bf0f34c..82f257d39be3 100644
+index 44f6436bdb06..678f71a31884 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
 @@ -52,18 +52,6 @@
@@ -540,11 +565,9 @@ index b5bb7bf0f34c..82f257d39be3 100644
  &display_subsystem {
  	status = "okay";
  };
-@@ -175,31 +194,42 @@
- &emmc {
- 	bus-width = <8>;
+@@ -177,30 +196,40 @@
  	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
+ 	mmc-hs200-1_8v;
  	non-removable;
 -	supports-emmc;
  	pinctrl-names = "default";
@@ -591,7 +614,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  &gpu {
  	status = "okay";
  	mali-supply = <&vdd_logic>;
-@@ -215,6 +245,8 @@
+@@ -216,6 +245,8 @@
  
  &hdmi {
  	#sound-dai-cells = <0>;
@@ -600,7 +623,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  	status = "okay";
  };
  
-@@ -231,14 +263,14 @@
+@@ -232,14 +263,14 @@
  		reg = <0x18>;
  		interrupt-parent = <&gpio2>;
  		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
@@ -617,7 +640,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  
  		vcc1-supply = <&vcc_sys>;
  		vcc2-supply = <&vcc_sys>;
-@@ -248,11 +280,11 @@
+@@ -249,11 +280,11 @@
  		vcc6-supply = <&vcc_sys>;
  
  		rtc {
@@ -631,7 +654,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  		};
  
  		gpio {
-@@ -272,8 +304,8 @@
+@@ -273,8 +304,8 @@
  				regulator-max-microvolt = <1450000>;
  				regulator-initial-mode = <0x1>;
  				regulator-ramp-delay = <12500>;
@@ -641,8 +664,8 @@ index b5bb7bf0f34c..82f257d39be3 100644
  				regulator-state-mem {
  					regulator-mode = <0x2>;
  					regulator-on-in-suspend;
-@@ -284,12 +316,13 @@
- 			vdd_arm: RK805_DCDC2@1 {
+@@ -285,12 +316,13 @@
+ 			vdd_arm: RK805_DCDC2 {
  				regulator-compatible = "RK805_DCDC2";
  				regulator-name = "vdd_arm";
 +				regulator-init-microvolt = <1225000>;
@@ -656,7 +679,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  				regulator-state-mem {
  					regulator-mode = <0x2>;
  					regulator-on-in-suspend;
-@@ -301,8 +334,8 @@
+@@ -302,8 +334,8 @@
  				regulator-compatible = "RK805_DCDC3";
  				regulator-name = "vcc_ddr";
  				regulator-initial-mode = <0x1>;
@@ -666,7 +689,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  				regulator-state-mem {
  					regulator-mode = <0x2>;
  					regulator-on-in-suspend;
-@@ -315,8 +348,8 @@
+@@ -316,8 +348,8 @@
  				regulator-min-microvolt = <3300000>;
  				regulator-max-microvolt = <3300000>;
  				regulator-initial-mode = <0x1>;
@@ -676,12 +699,12 @@ index b5bb7bf0f34c..82f257d39be3 100644
  				regulator-state-mem {
  					regulator-mode = <0x2>;
  					regulator-on-in-suspend;
-@@ -324,13 +357,13 @@
+@@ -325,13 +357,13 @@
  				};
  			};
  
--			vdd_18: RK805_LDO1@4 {
-+			vcc_18: RK805_LDO1@4 {
+-			vdd_18: RK805_LDO1 {
++			vcc_18: RK805_LDO1 {
  				regulator-compatible = "RK805_LDO1";
 -				regulator-name = "vdd_18";
 +				regulator-name = "vcc_18";
@@ -693,7 +716,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  				regulator-state-mem {
  					regulator-on-in-suspend;
  					regulator-suspend-microvolt = <1800000>;
-@@ -342,24 +375,24 @@
+@@ -343,8 +375,8 @@
  				regulator-name = "vcc18_emmc";
  				regulator-min-microvolt = <1800000>;
  				regulator-max-microvolt = <1800000>;
@@ -703,29 +726,17 @@ index b5bb7bf0f34c..82f257d39be3 100644
  				regulator-state-mem {
  					regulator-on-in-suspend;
  					regulator-suspend-microvolt = <1800000>;
- 				};
- 			};
- 
--			vdd_10: RK805_LDO3@6 {
-+			vdd_11: RK805_LDO3@6 {
- 				regulator-compatible = "RK805_LDO3";
--				regulator-name = "vdd_10";
--				regulator-min-microvolt = <1000000>;
--				regulator-max-microvolt = <1000000>;
+@@ -356,8 +388,8 @@
+ 				regulator-name = "vdd_10";
+ 				regulator-min-microvolt = <1000000>;
+ 				regulator-max-microvolt = <1000000>;
 -				regulator-boot-on;
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
  				regulator-always-on;
 +				regulator-boot-on;
  				regulator-state-mem {
  					regulator-on-in-suspend;
--					regulator-suspend-microvolt = <1000000>;
-+					regulator-suspend-microvolt = <1100000>;
- 				};
- 			};
- 		};
-@@ -373,6 +406,16 @@
+ 					regulator-suspend-microvolt = <1000000>;
+@@ -374,6 +406,16 @@
  };
  
  &i2s1 {
@@ -742,7 +753,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  	#sound-dai-cells = <0>;
  	status = "okay";
  };
-@@ -383,7 +426,7 @@
+@@ -384,7 +426,7 @@
  	vccio1-supply = <&vcc_io>;
  	vccio2-supply = <&vcc18_emmc>;
  	vccio3-supply = <&vcc_io>;
@@ -751,7 +762,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  	vccio5-supply = <&vcc_io>;
  	vccio6-supply = <&vcc_io>;
  	pmuio-supply = <&vcc_io>;
-@@ -392,37 +435,26 @@
+@@ -393,37 +435,26 @@
  &pinctrl {
  	ir {
  		ir_int: ir-int {
@@ -795,7 +806,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  };
  
  &rkvdec_mmu {
-@@ -437,8 +469,15 @@
+@@ -438,8 +469,15 @@
  	max-frequency = <150000000>;
  	pinctrl-names = "default";
  	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
@@ -812,30 +823,30 @@ index b5bb7bf0f34c..82f257d39be3 100644
  	status = "okay";
  };
  
-@@ -456,9 +495,22 @@
+@@ -457,9 +495,22 @@
  	};
  };
  
 +&threshold {
-+	temperature = <90000>; /* millicelsius */
++	temperature = <80000>; /* millicelsius */
 +};
 +
 +&target {
-+	temperature = <105000>; /* millicelsius */
++	temperature = <95000>; /* millicelsius */
 +};
 +
 +&soc_crit {
-+	temperature = <110000>; /* millicelsius */
++	temperature = <100000>; /* millicelsius */
 +};
 +
  &tsadc {
  	rockchip,hw-tshut-mode = <0>;
  	rockchip,hw-tshut-polarity = <0>;
-+	rockchip,hw-tshut-temp = <120000>;
++	rockchip,hw-tshut-temp = <110000>;
  	status = "okay";
  };
  
-@@ -482,15 +534,16 @@
+@@ -483,15 +534,16 @@
  };
  
  &u3phy {
@@ -854,7 +865,7 @@ index b5bb7bf0f34c..82f257d39be3 100644
  };
  
 
-From 5f81039a852799686e3bed6d5b5e2c0d12d849f1 Mon Sep 17 00:00:00 2001
+From 238aa6ff950f959afb9a6153b178442666bb688c Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 17 Jan 2018 22:17:45 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3328-box board
@@ -866,7 +877,7 @@ Subject: [PATCH] arm64: dts: rockchip: add rk3328-box board
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-box.dts b/arch/arm64/boot/dts/rockchip/rk3328-box.dts
 new file mode 100644
-index 000000000000..215e6a42c8b8
+index 000000000000..110b3ac1c8eb
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-box.dts
 @@ -0,0 +1,628 @@
@@ -1179,7 +1190,7 @@ index 000000000000..215e6a42c8b8
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
-+			vdd_logic: RK805_DCDC1@0 {
++			vdd_logic: RK805_DCDC1 {
 +				regulator-compatible = "RK805_DCDC1";
 +				regulator-name = "vdd_logic";
 +				regulator-min-microvolt = <712500>;
@@ -1195,7 +1206,7 @@ index 000000000000..215e6a42c8b8
 +				};
 +			};
 +
-+			vdd_arm: RK805_DCDC2@1 {
++			vdd_arm: RK805_DCDC2 {
 +				regulator-compatible = "RK805_DCDC2";
 +				regulator-name = "vdd_arm";
 +				regulator-init-microvolt = <1225000>;
@@ -1212,7 +1223,7 @@ index 000000000000..215e6a42c8b8
 +				};
 +			};
 +
-+			vcc_ddr: RK805_DCDC3@2 {
++			vcc_ddr: RK805_DCDC3 {
 +				regulator-compatible = "RK805_DCDC3";
 +				regulator-name = "vcc_ddr";
 +				regulator-initial-mode = <0x1>;
@@ -1224,7 +1235,7 @@ index 000000000000..215e6a42c8b8
 +				};
 +			};
 +
-+			vcc_io: RK805_DCDC4@3 {
++			vcc_io: RK805_DCDC4 {
 +				regulator-compatible = "RK805_DCDC4";
 +				regulator-name = "vcc_io";
 +				regulator-min-microvolt = <3300000>;
@@ -1239,7 +1250,7 @@ index 000000000000..215e6a42c8b8
 +				};
 +			};
 +
-+			vcc_18: RK805_LDO1@4 {
++			vcc_18: RK805_LDO1 {
 +				regulator-compatible = "RK805_LDO1";
 +				regulator-name = "vcc_18";
 +				regulator-min-microvolt = <1800000>;
@@ -1252,7 +1263,7 @@ index 000000000000..215e6a42c8b8
 +				};
 +			};
 +
-+			vcc18_emmc: RK805_LDO2@5 {
++			vcc18_emmc: RK805_LDO2 {
 +				regulator-compatible = "RK805_LDO2";
 +				regulator-name = "vcc18_emmc";
 +				regulator-min-microvolt = <1800000>;
@@ -1265,16 +1276,16 @@ index 000000000000..215e6a42c8b8
 +				};
 +			};
 +
-+			vdd_11: RK805_LDO3@6 {
++			vdd_10: RK805_LDO3 {
 +				regulator-compatible = "RK805_LDO3";
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
++				regulator-name = "vdd_10";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
 +				regulator-always-on;
 +				regulator-boot-on;
 +				regulator-state-mem {
 +					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1100000>;
++					regulator-suspend-microvolt = <1000000>;
 +				};
 +			};
 +		};
@@ -1393,21 +1404,21 @@ index 000000000000..215e6a42c8b8
 +};
 +
 +&threshold {
-+	temperature = <90000>; /* millicelsius */
++	temperature = <80000>; /* millicelsius */
 +};
 +
 +&target {
-+	temperature = <105000>; /* millicelsius */
++	temperature = <95000>; /* millicelsius */
 +};
 +
 +&soc_crit {
-+	temperature = <110000>; /* millicelsius */
++	temperature = <100000>; /* millicelsius */
 +};
 +
 +&tsadc {
 +	rockchip,hw-tshut-mode = <0>;
 +	rockchip,hw-tshut-polarity = <0>;
-+	rockchip,hw-tshut-temp = <120000>;
++	rockchip,hw-tshut-temp = <110000>;
 +	status = "okay";
 +};
 +
@@ -1499,7 +1510,7 @@ index 000000000000..215e6a42c8b8
 +	status = "okay";
 +};
 
-From 29ab3ef6a26cc6639f3975d9e9987bbb7b0aa242 Mon Sep 17 00:00:00 2001
+From 4a83b5e4648acb4744feb6a0341f59563bea1685 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 17 Jan 2018 22:17:45 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3328-rockbox board
@@ -1511,7 +1522,7 @@ Subject: [PATCH] arm64: dts: rockchip: add rk3328-rockbox board
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rockbox.dts b/arch/arm64/boot/dts/rockchip/rk3328-rockbox.dts
 new file mode 100644
-index 000000000000..05d496fd2c20
+index 000000000000..01795f3429a2
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-rockbox.dts
 @@ -0,0 +1,568 @@
@@ -1797,7 +1808,7 @@ index 000000000000..05d496fd2c20
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
-+			vdd_logic: RK805_DCDC1@0 {
++			vdd_logic: RK805_DCDC1 {
 +				regulator-compatible = "RK805_DCDC1";
 +				regulator-name = "vdd_logic";
 +				regulator-min-microvolt = <712500>;
@@ -1813,7 +1824,7 @@ index 000000000000..05d496fd2c20
 +				};
 +			};
 +
-+			vdd_arm: RK805_DCDC2@1 {
++			vdd_arm: RK805_DCDC2 {
 +				regulator-compatible = "RK805_DCDC2";
 +				regulator-name = "vdd_arm";
 +				regulator-init-microvolt = <1225000>;
@@ -1830,7 +1841,7 @@ index 000000000000..05d496fd2c20
 +				};
 +			};
 +
-+			vcc_ddr: RK805_DCDC3@2 {
++			vcc_ddr: RK805_DCDC3 {
 +				regulator-compatible = "RK805_DCDC3";
 +				regulator-name = "vcc_ddr";
 +				regulator-initial-mode = <0x1>;
@@ -1842,7 +1853,7 @@ index 000000000000..05d496fd2c20
 +				};
 +			};
 +
-+			vcc_io: RK805_DCDC4@3 {
++			vcc_io: RK805_DCDC4 {
 +				regulator-compatible = "RK805_DCDC4";
 +				regulator-name = "vcc_io";
 +				regulator-min-microvolt = <3300000>;
@@ -1857,7 +1868,7 @@ index 000000000000..05d496fd2c20
 +				};
 +			};
 +
-+			vcc_18: RK805_LDO1@4 {
++			vcc_18: RK805_LDO1 {
 +				regulator-compatible = "RK805_LDO1";
 +				regulator-name = "vcc_18";
 +				regulator-min-microvolt = <1800000>;
@@ -1870,7 +1881,7 @@ index 000000000000..05d496fd2c20
 +				};
 +			};
 +
-+			vcc18_emmc: RK805_LDO2@5 {
++			vcc18_emmc: RK805_LDO2 {
 +				regulator-compatible = "RK805_LDO2";
 +				regulator-name = "vcc18_emmc";
 +				regulator-min-microvolt = <1800000>;
@@ -1883,16 +1894,16 @@ index 000000000000..05d496fd2c20
 +				};
 +			};
 +
-+			vdd_11: RK805_LDO3@6 {
++			vdd_10: RK805_LDO3 {
 +				regulator-compatible = "RK805_LDO3";
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
++				regulator-name = "vdd_10";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
 +				regulator-always-on;
 +				regulator-boot-on;
 +				regulator-state-mem {
 +					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1100000>;
++					regulator-suspend-microvolt = <1000000>;
 +				};
 +			};
 +		};
@@ -1984,21 +1995,21 @@ index 000000000000..05d496fd2c20
 +};
 +
 +&threshold {
-+	temperature = <90000>; /* millicelsius */
++	temperature = <80000>; /* millicelsius */
 +};
 +
 +&target {
-+	temperature = <105000>; /* millicelsius */
++	temperature = <95000>; /* millicelsius */
 +};
 +
 +&soc_crit {
-+	temperature = <110000>; /* millicelsius */
++	temperature = <100000>; /* millicelsius */
 +};
 +
 +&tsadc {
 +	rockchip,hw-tshut-mode = <0>;
 +	rockchip,hw-tshut-polarity = <0>;
-+	rockchip,hw-tshut-temp = <120000>;
++	rockchip,hw-tshut-temp = <110000>;
 +	status = "okay";
 +};
 +
@@ -2084,22 +2095,22 @@ index 000000000000..05d496fd2c20
 +	status = "okay";
 +};
 
-From 72dadc98a19512cb446bd7c8501139433939e680 Mon Sep 17 00:00:00 2001
+From 3585f8107b92feb0aaac4066d2fedf5761bb01fa Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 17 Jan 2018 22:17:45 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3328-roc-cc board
 
 ---
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 556 +++++++++++++++++++++++++
- 1 file changed, 556 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 557 +++++++++++++++++++++++++
+ 1 file changed, 557 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 new file mode 100644
-index 000000000000..f739f9b28832
+index 000000000000..26405429b382
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -0,0 +1,556 @@
+@@ -0,0 +1,557 @@
 +/*
 + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
 + *
@@ -2224,6 +2235,7 @@ index 000000000000..f739f9b28832
 +	ir-receiver {
 +		compatible = "gpio-ir-receiver";
 +		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
++		linux,rc-map-name = "rc-roc-cc";
 +		pinctrl-0 = <&ir_int>;
 +		pinctrl-names = "default";
 +		status = "okay";
@@ -2386,7 +2398,7 @@ index 000000000000..f739f9b28832
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
-+			vdd_logic: RK805_DCDC1@0 {
++			vdd_logic: RK805_DCDC1 {
 +				regulator-compatible = "RK805_DCDC1";
 +				regulator-name = "vdd_logic";
 +				regulator-min-microvolt = <712500>;
@@ -2402,7 +2414,7 @@ index 000000000000..f739f9b28832
 +				};
 +			};
 +
-+			vdd_arm: RK805_DCDC2@1 {
++			vdd_arm: RK805_DCDC2 {
 +				regulator-compatible = "RK805_DCDC2";
 +				regulator-name = "vdd_arm";
 +				regulator-init-microvolt = <1225000>;
@@ -2419,7 +2431,7 @@ index 000000000000..f739f9b28832
 +				};
 +			};
 +
-+			vcc_ddr: RK805_DCDC3@2 {
++			vcc_ddr: RK805_DCDC3 {
 +				regulator-compatible = "RK805_DCDC3";
 +				regulator-name = "vcc_ddr";
 +				regulator-initial-mode = <0x1>;
@@ -2431,7 +2443,7 @@ index 000000000000..f739f9b28832
 +				};
 +			};
 +
-+			vcc_io: RK805_DCDC4@3 {
++			vcc_io: RK805_DCDC4 {
 +				regulator-compatible = "RK805_DCDC4";
 +				regulator-name = "vcc_io";
 +				regulator-min-microvolt = <3300000>;
@@ -2446,7 +2458,7 @@ index 000000000000..f739f9b28832
 +				};
 +			};
 +
-+			vcc_18: RK805_LDO1@4 {
++			vcc_18: RK805_LDO1 {
 +				regulator-compatible = "RK805_LDO1";
 +				regulator-name = "vcc_18";
 +				regulator-min-microvolt = <1800000>;
@@ -2459,7 +2471,7 @@ index 000000000000..f739f9b28832
 +				};
 +			};
 +
-+			vcc18_emmc: RK805_LDO2@5 {
++			vcc18_emmc: RK805_LDO2 {
 +				regulator-compatible = "RK805_LDO2";
 +				regulator-name = "vcc18_emmc";
 +				regulator-min-microvolt = <1800000>;
@@ -2472,16 +2484,16 @@ index 000000000000..f739f9b28832
 +				};
 +			};
 +
-+			vdd_11: RK805_LDO3@6 {
++			vdd_10: RK805_LDO3 {
 +				regulator-compatible = "RK805_LDO3";
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
++				regulator-name = "vdd_10";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
 +				regulator-always-on;
 +				regulator-boot-on;
 +				regulator-state-mem {
 +					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1100000>;
++					regulator-suspend-microvolt = <1000000>;
 +				};
 +			};
 +		};
@@ -2557,21 +2569,21 @@ index 000000000000..f739f9b28832
 +};
 +
 +&threshold {
-+	temperature = <90000>; /* millicelsius */
++	temperature = <80000>; /* millicelsius */
 +};
 +
 +&target {
-+	temperature = <105000>; /* millicelsius */
++	temperature = <95000>; /* millicelsius */
 +};
 +
 +&soc_crit {
-+	temperature = <110000>; /* millicelsius */
++	temperature = <100000>; /* millicelsius */
 +};
 +
 +&tsadc {
 +	rockchip,hw-tshut-mode = <0>;
 +	rockchip,hw-tshut-polarity = <0>;
-+	rockchip,hw-tshut-temp = <120000>;
++	rockchip,hw-tshut-temp = <110000>;
 +	status = "okay";
 +};
 +
@@ -2657,7 +2669,7 @@ index 000000000000..f739f9b28832
 +	status = "okay";
 +};
 
-From 37a995d53a00f87bd07dd59db51905ec70f9456b Mon Sep 17 00:00:00 2001
+From af781f791aaa33941deb274fea0c75938f7d2f76 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 3 Sep 2017 11:19:19 +0200
 Subject: [PATCH] arm64: dts: rockchip: rk3328-rock64: use two dai-link for i2s
@@ -2669,7 +2681,7 @@ Subject: [PATCH] arm64: dts: rockchip: rk3328-rock64: use two dai-link for i2s
  2 files changed, 31 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 82f257d39be3..995829a12ad3 100644
+index 678f71a31884..bd0d96c7d5b7 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
 @@ -114,6 +114,11 @@
@@ -2747,7 +2759,7 @@ index 53dd085d3ee2..bf7ce34084a9 100644
  	.probe = snd_soc_dummy_probe,
  	.remove = snd_soc_dummy_remove,
 
-From 1f23d678ac0e5f1e65492a3c35653461e3b19633 Mon Sep 17 00:00:00 2001
+From 6855cd63d9ae9ed75e3c07674323c4f04c3471bc Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Fri, 26 Jan 2018 00:03:46 +0100
 Subject: [PATCH] arm64: dts: rockchip: rk3328-roc-cc: disable sd-card voltage
@@ -2761,7 +2773,7 @@ RK kernel uses GRF_SOC_CON10 bit 1 to mute avcodec.
  1 file changed, 1 insertion(+), 11 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index f739f9b28832..5c79dfd32d87 100644
+index 26405429b382..ae8bca0924dd 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
 @@ -75,8 +75,6 @@
@@ -2773,7 +2785,7 @@ index f739f9b28832..5c79dfd32d87 100644
  		regulator-name = "vccio_sd";
  		regulator-type = "voltage";
  		regulator-min-microvolt = <1800000>;
-@@ -411,12 +409,6 @@
+@@ -412,12 +410,6 @@
  		};
  	};
  
@@ -2786,7 +2798,7 @@ index f739f9b28832..5c79dfd32d87 100644
  	pmic {
  		pmic_int_l: pmic-int-l {
  			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_up>;
-@@ -444,13 +436,11 @@
+@@ -445,13 +437,11 @@
  	cap-mmc-highspeed;
  	cap-sd-highspeed;
  	disable-wp;
@@ -2802,7 +2814,7 @@ index f739f9b28832..5c79dfd32d87 100644
  };
  
 
-From e9dc16e71f4cbdd6069e4fa51ac80dfe124d0e42 Mon Sep 17 00:00:00 2001
+From f4eddf039bae6521abb43a121f8059ff4c3dd317 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 28 Jan 2018 15:17:34 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3399-sapphire board
@@ -2961,7 +2973,7 @@ index 000000000000..36613de5c68e
 +	};
 +};
 
-From 7e61af4aa1c7c98c768aea2d7c48dcb4765227d0 Mon Sep 17 00:00:00 2001
+From 15b8ec417fc2758b5cbff3b26e7639d988aeea62 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 28 Jan 2018 15:17:53 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3399-rock960 board
@@ -3961,7 +3973,7 @@ index 000000000000..a5c906dd5961
 +	status = "okay";
 +};
 
-From eae2191351dd73db48ff927de52c2e961decfa45 Mon Sep 17 00:00:00 2001
+From dc9deb82579a55cff13192dbd05674296f124958 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 28 Jan 2018 15:38:32 +0100
 Subject: [PATCH] arm: dts: rk3288: add cec clock and pinctrl
@@ -3971,7 +3983,7 @@ Subject: [PATCH] arm: dts: rk3288: add cec clock and pinctrl
  1 file changed, 13 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index b37d1954d27c..db142a89bb7b 100644
+index 77e592b4f4fd..6c974ce32dcf 100644
 --- a/arch/arm/boot/dts/rk3288.dtsi
 +++ b/arch/arm/boot/dts/rk3288.dtsi
 @@ -947,6 +947,8 @@
@@ -3983,7 +3995,7 @@ index b37d1954d27c..db142a89bb7b 100644
  					 <&cru SCLK_ISP_JPE>,
  					 <&cru SCLK_ISP>,
  					 <&cru SCLK_RGA>;
-@@ -1531,10 +1533,10 @@
+@@ -1533,10 +1535,10 @@
  		reg-io-width = <4>;
  		rockchip,grf = <&grf>;
  		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
@@ -3997,7 +4009,7 @@ index b37d1954d27c..db142a89bb7b 100644
  		pinctrl-1 = <&hdmi_gpio>;
  		power-domains = <&power RK3288_PD_VIO>;
  		status = "disabled";
-@@ -1903,6 +1905,14 @@
+@@ -1905,6 +1907,14 @@
  						 &pcfg_pull_none>;
  			};
  
@@ -4013,7 +4025,7 @@ index b37d1954d27c..db142a89bb7b 100644
  				rockchip,pins = <7 19 RK_FUNC_2 &pcfg_pull_none>,
  						<7 20 RK_FUNC_2 &pcfg_pull_none>;
 
-From d3f46f176f6ea3d7f1f201875279dbf7bbcdb37c Mon Sep 17 00:00:00 2001
+From e1782b6c14958947c46bbaecaf46a34f613a0488 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 14 Feb 2018 08:03:12 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3399-odroidn1 board
@@ -5035,7 +5047,7 @@ index 000000000000..1bff86c2bf03
 +	status = "okay";
 +};
 
-From 7675bf39195d3c70ef6a0b6a123f5ce112012563 Mon Sep 17 00:00:00 2001
+From 96262c1d2780fea76219ce302fc7e6e69b217935 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Mon, 26 Feb 2018 23:39:15 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3399-rockpro64 board
@@ -5223,7 +5235,7 @@ index 000000000000..0606771dbf5c
 +	status = "okay";
 +};
 
-From 7a0c34397e79227e3ff85e566e0b121e09b29786 Mon Sep 17 00:00:00 2001
+From dcab2e7afb394401be3b79c1807af13ec615321c Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 4 Mar 2018 09:08:35 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3328-box-trn9 board
@@ -5235,7 +5247,7 @@ Subject: [PATCH] arm64: dts: rockchip: add rk3328-box-trn9 board
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts b/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
 new file mode 100644
-index 000000000000..a736d00d838a
+index 000000000000..db0946b936c2
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
 @@ -0,0 +1,652 @@
@@ -5579,7 +5591,7 @@ index 000000000000..a736d00d838a
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
-+			vdd_logic: RK805_DCDC1@0 {
++			vdd_logic: RK805_DCDC1 {
 +				regulator-compatible = "RK805_DCDC1";
 +				regulator-name = "vdd_logic";
 +				regulator-min-microvolt = <712500>;
@@ -5595,7 +5607,7 @@ index 000000000000..a736d00d838a
 +				};
 +			};
 +
-+			vdd_arm: RK805_DCDC2@1 {
++			vdd_arm: RK805_DCDC2 {
 +				regulator-compatible = "RK805_DCDC2";
 +				regulator-name = "vdd_arm";
 +				regulator-init-microvolt = <1225000>;
@@ -5612,7 +5624,7 @@ index 000000000000..a736d00d838a
 +				};
 +			};
 +
-+			vcc_ddr: RK805_DCDC3@2 {
++			vcc_ddr: RK805_DCDC3 {
 +				regulator-compatible = "RK805_DCDC3";
 +				regulator-name = "vcc_ddr";
 +				regulator-initial-mode = <0x1>;
@@ -5624,7 +5636,7 @@ index 000000000000..a736d00d838a
 +				};
 +			};
 +
-+			vcc_io: RK805_DCDC4@3 {
++			vcc_io: RK805_DCDC4 {
 +				regulator-compatible = "RK805_DCDC4";
 +				regulator-name = "vcc_io";
 +				regulator-min-microvolt = <3300000>;
@@ -5639,7 +5651,7 @@ index 000000000000..a736d00d838a
 +				};
 +			};
 +
-+			vcc_18: RK805_LDO1@4 {
++			vcc_18: RK805_LDO1 {
 +				regulator-compatible = "RK805_LDO1";
 +				regulator-name = "vcc_18";
 +				regulator-min-microvolt = <1800000>;
@@ -5652,7 +5664,7 @@ index 000000000000..a736d00d838a
 +				};
 +			};
 +
-+			vcc18_emmc: RK805_LDO2@5 {
++			vcc18_emmc: RK805_LDO2 {
 +				regulator-compatible = "RK805_LDO2";
 +				regulator-name = "vcc18_emmc";
 +				regulator-min-microvolt = <1800000>;
@@ -5665,16 +5677,16 @@ index 000000000000..a736d00d838a
 +				};
 +			};
 +
-+			vdd_11: RK805_LDO3@6 {
++			vdd_10: RK805_LDO3 {
 +				regulator-compatible = "RK805_LDO3";
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
++				regulator-name = "vdd_10";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
 +				regulator-always-on;
 +				regulator-boot-on;
 +				regulator-state-mem {
 +					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1100000>;
++					regulator-suspend-microvolt = <1000000>;
 +				};
 +			};
 +		};
@@ -5792,21 +5804,21 @@ index 000000000000..a736d00d838a
 +};
 +
 +&threshold {
-+	temperature = <90000>; /* millicelsius */
++	temperature = <80000>; /* millicelsius */
 +};
 +
 +&target {
-+	temperature = <105000>; /* millicelsius */
++	temperature = <95000>; /* millicelsius */
 +};
 +
 +&soc_crit {
-+	temperature = <110000>; /* millicelsius */
++	temperature = <100000>; /* millicelsius */
 +};
 +
 +&tsadc {
 +	rockchip,hw-tshut-mode = <0>;
 +	rockchip,hw-tshut-polarity = <0>;
-+	rockchip,hw-tshut-temp = <120000>;
++	rockchip,hw-tshut-temp = <110000>;
 +	status = "okay";
 +};
 +
@@ -5892,7 +5904,7 @@ index 000000000000..a736d00d838a
 +	status = "okay";
 +};
 
-From 429966f1cf706834d8e35e4a8ac7230067796734 Mon Sep 17 00:00:00 2001
+From 235a954a9b939877e983be0d204f7e9b90093f92 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Sun, 4 Mar 2018 09:08:35 +0100
 Subject: [PATCH] arm64: dts: rockchip: add rk3328-box-z28 board
@@ -5904,7 +5916,7 @@ Subject: [PATCH] arm64: dts: rockchip: add rk3328-box-z28 board
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-box-z28.dts b/arch/arm64/boot/dts/rockchip/rk3328-box-z28.dts
 new file mode 100644
-index 000000000000..d124195d6798
+index 000000000000..69e6e70719cf
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-box-z28.dts
 @@ -0,0 +1,583 @@
@@ -6201,7 +6213,7 @@ index 000000000000..d124195d6798
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
-+			vdd_logic: RK805_DCDC1@0 {
++			vdd_logic: RK805_DCDC1 {
 +				regulator-compatible = "RK805_DCDC1";
 +				regulator-name = "vdd_logic";
 +				regulator-min-microvolt = <712500>;
@@ -6217,7 +6229,7 @@ index 000000000000..d124195d6798
 +				};
 +			};
 +
-+			vdd_arm: RK805_DCDC2@1 {
++			vdd_arm: RK805_DCDC2 {
 +				regulator-compatible = "RK805_DCDC2";
 +				regulator-name = "vdd_arm";
 +				regulator-init-microvolt = <1225000>;
@@ -6234,7 +6246,7 @@ index 000000000000..d124195d6798
 +				};
 +			};
 +
-+			vcc_ddr: RK805_DCDC3@2 {
++			vcc_ddr: RK805_DCDC3 {
 +				regulator-compatible = "RK805_DCDC3";
 +				regulator-name = "vcc_ddr";
 +				regulator-initial-mode = <0x1>;
@@ -6246,7 +6258,7 @@ index 000000000000..d124195d6798
 +				};
 +			};
 +
-+			vcc_io: RK805_DCDC4@3 {
++			vcc_io: RK805_DCDC4 {
 +				regulator-compatible = "RK805_DCDC4";
 +				regulator-name = "vcc_io";
 +				regulator-min-microvolt = <3300000>;
@@ -6261,7 +6273,7 @@ index 000000000000..d124195d6798
 +				};
 +			};
 +
-+			vcc_18: RK805_LDO1@4 {
++			vcc_18: RK805_LDO1 {
 +				regulator-compatible = "RK805_LDO1";
 +				regulator-name = "vcc_18";
 +				regulator-min-microvolt = <1800000>;
@@ -6274,7 +6286,7 @@ index 000000000000..d124195d6798
 +				};
 +			};
 +
-+			vcc18_emmc: RK805_LDO2@5 {
++			vcc18_emmc: RK805_LDO2 {
 +				regulator-compatible = "RK805_LDO2";
 +				regulator-name = "vcc18_emmc";
 +				regulator-min-microvolt = <1800000>;
@@ -6287,16 +6299,16 @@ index 000000000000..d124195d6798
 +				};
 +			};
 +
-+			vdd_11: RK805_LDO3@6 {
++			vdd_10: RK805_LDO3 {
 +				regulator-compatible = "RK805_LDO3";
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
++				regulator-name = "vdd_10";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
 +				regulator-always-on;
 +				regulator-boot-on;
 +				regulator-state-mem {
 +					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1100000>;
++					regulator-suspend-microvolt = <1000000>;
 +				};
 +			};
 +		};
@@ -6386,21 +6398,21 @@ index 000000000000..d124195d6798
 +};
 +
 +&threshold {
-+	temperature = <90000>; /* millicelsius */
++	temperature = <80000>; /* millicelsius */
 +};
 +
 +&target {
-+	temperature = <105000>; /* millicelsius */
++	temperature = <95000>; /* millicelsius */
 +};
 +
 +&soc_crit {
-+	temperature = <110000>; /* millicelsius */
++	temperature = <100000>; /* millicelsius */
 +};
 +
 +&tsadc {
 +	rockchip,hw-tshut-mode = <0>;
 +	rockchip,hw-tshut-polarity = <0>;
-+	rockchip,hw-tshut-temp = <120000>;
++	rockchip,hw-tshut-temp = <110000>;
 +	status = "okay";
 +};
 +
@@ -6491,3 +6503,394 @@ index 000000000000..d124195d6798
 +&venc_srv {
 +	status = "okay";
 +};
+
+From 8d44237b306a8d1513ac5a747e08a325e5f869e8 Mon Sep 17 00:00:00 2001
+From: Jonas Karlman <jonas@kwiboo.se>
+Date: Tue, 10 Apr 2018 22:07:37 +0200
+Subject: [PATCH] arm64: dts: rockchip: rk3328-roc-cc: use 1066MHz ddr
+ frequency
+
+---
+ .../dts/rockchip/rk3328-dram-box-plus-timing.dtsi  | 263 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |  33 ++-
+ 2 files changed, 295 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-dram-box-plus-timing.dtsi
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-dram-box-plus-timing.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-dram-box-plus-timing.dtsi
+new file mode 100644
+index 000000000000..ac34cc7ab1ce
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3328-dram-box-plus-timing.dtsi
+@@ -0,0 +1,263 @@
++/*
++ * Copyright (c) 2016 Fuzhou Rockchip Electronics Co., Ltd
++ *
++ * This file is dual-licensed: you can use it either under the terms
++ * of the GPL or the X11 license, at your option. Note that this dual
++ * licensing only applies to this file, and not this project as a
++ * whole.
++ *
++ *  a) This library is free software; you can redistribute it and/or
++ *     modify it under the terms of the GNU General Public License as
++ *     published by the Free Software Foundation; either version 2 of the
++ *     License, or (at your option) any later version.
++ *
++ *     This library is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ * Or, alternatively,
++ *
++ *  b) Permission is hereby granted, free of charge, to any person
++ *     obtaining a copy of this software and associated documentation
++ *     files (the "Software"), to deal in the Software without
++ *     restriction, including without limitation the rights to use,
++ *     copy, modify, merge, publish, distribute, sublicense, and/or
++ *     sell copies of the Software, and to permit persons to whom the
++ *     Software is furnished to do so, subject to the following
++ *     conditions:
++ *
++ *     The above copyright notice and this permission notice shall be
++ *     included in all copies or substantial portions of the Software.
++ *
++ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ *     OTHER DEALINGS IN THE SOFTWARE.
++ */
++#include <dt-bindings/clock/rockchip-ddr.h>
++#include <dt-bindings/memory/rk3328-dram.h>
++
++&ddr_timing {
++	ddr4_odt = <DDR4_RTT_NOM_120ohm>;
++	phy_ddr4_ca_drv = <PHY_DDR4_LPDDR3_RON_RTT_25ohm>;
++	phy_ddr4_ck_drv = <PHY_DDR4_LPDDR3_RON_RTT_25ohm>;
++	phy_ddr4_dq_drv = <PHY_DDR4_LPDDR3_RON_RTT_25ohm>;
++	phy_ddr4_odt = <PHY_DDR4_LPDDR3_RON_RTT_120ohm>;
++
++	/* CA de-skew, one step is 47.8ps, range 0-15 */
++	ddr3a1_ddr4a9_de-skew = <1>;
++	ddr3a0_ddr4a10_de-skew = <1>;
++	ddr3a3_ddr4a6_de-skew = <0>;
++	ddr3a2_ddr4a4_de-skew = <1>;
++	ddr3a5_ddr4a8_de-skew = <0>;
++	ddr3a4_ddr4a5_de-skew = <1>;
++	ddr3a7_ddr4a11_de-skew = <1>;
++	ddr3a6_ddr4a7_de-skew = <0>;
++	ddr3a9_ddr4a0_de-skew = <1>;
++	ddr3a8_ddr4a13_de-skew = <0>;
++	ddr3a11_ddr4a3_de-skew = <2>;
++	ddr3a10_ddr4cs0_de-skew = <3>;
++	ddr3a13_ddr4a2_de-skew = <1>;
++	ddr3a12_ddr4ba1_de-skew = <0>;
++	ddr3a15_ddr4odt0_de-skew = <3>;
++	ddr3a14_ddr4a1_de-skew = <2>;
++	ddr3ba1_ddr4a15_de-skew = <1>;
++	ddr3ba0_ddr4bg0_de-skew = <1>;
++	ddr3ras_ddr4cke_de-skew = <3>;
++	ddr3ba2_ddr4ba0_de-skew = <1>;
++	ddr3we_ddr4bg1_de-skew = <3>;
++	ddr3cas_ddr4a12_de-skew = <1>;
++	ddr3ckn_ddr4ckn_de-skew = <4>;
++	ddr3ckp_ddr4ckp_de-skew = <4>;
++	ddr3cke_ddr4a16_de-skew = <1>;
++	ddr3odt0_ddr4a14_de-skew = <1>;
++	ddr3cs0_ddr4act_de-skew = <2>;
++	ddr3reset_ddr4reset_de-skew = <3>;
++	ddr3cs1_ddr4cs1_de-skew = <2>;
++	ddr3odt1_ddr4odt1_de-skew = <2>;
++
++	/* DATA de-skew
++	 * RX one step is 25.1ps, range 0-15
++	 * TX one step is 47.8ps, range 0-15
++	 */
++	cs0_dm0_rx_de-skew = <8>;
++	cs0_dm0_tx_de-skew = <9>;
++	cs0_dq0_rx_de-skew = <8>;
++	cs0_dq0_tx_de-skew = <9>;
++	cs0_dq1_rx_de-skew = <8>;
++	cs0_dq1_tx_de-skew = <9>;
++	cs0_dq2_rx_de-skew = <8>;
++	cs0_dq2_tx_de-skew = <9>;
++	cs0_dq3_rx_de-skew = <8>;
++	cs0_dq3_tx_de-skew = <9>;
++	cs0_dq4_rx_de-skew = <8>;
++	cs0_dq4_tx_de-skew = <9>;
++	cs0_dq5_rx_de-skew = <8>;
++	cs0_dq5_tx_de-skew = <9>;
++	cs0_dq6_rx_de-skew = <8>;
++	cs0_dq6_tx_de-skew = <9>;
++	cs0_dq7_rx_de-skew = <8>;
++	cs0_dq7_tx_de-skew = <9>;
++	cs0_dqs0_rx_de-skew = <7>;
++	cs0_dqs0p_tx_de-skew = <10>;
++	cs0_dqs0n_tx_de-skew = <10>;
++
++	cs0_dm1_rx_de-skew = <8>;
++	cs0_dm1_tx_de-skew = <8>;
++	cs0_dq8_rx_de-skew = <8>;
++	cs0_dq8_tx_de-skew = <9>;
++	cs0_dq9_rx_de-skew = <8>;
++	cs0_dq9_tx_de-skew = <8>;
++	cs0_dq10_rx_de-skew = <8>;
++	cs0_dq10_tx_de-skew = <9>;
++	cs0_dq11_rx_de-skew = <8>;
++	cs0_dq11_tx_de-skew = <8>;
++	cs0_dq12_rx_de-skew = <8>;
++	cs0_dq12_tx_de-skew = <9>;
++	cs0_dq13_rx_de-skew = <8>;
++	cs0_dq13_tx_de-skew = <8>;
++	cs0_dq14_rx_de-skew = <8>;
++	cs0_dq14_tx_de-skew = <9>;
++	cs0_dq15_rx_de-skew = <8>;
++	cs0_dq15_tx_de-skew = <8>;
++	cs0_dqs1_rx_de-skew = <8>;
++	cs0_dqs1p_tx_de-skew = <10>;
++	cs0_dqs1n_tx_de-skew = <10>;
++
++	cs0_dm2_rx_de-skew = <8>;
++	cs0_dm2_tx_de-skew = <9>;
++	cs0_dq16_rx_de-skew = <8>;
++	cs0_dq16_tx_de-skew = <9>;
++	cs0_dq17_rx_de-skew = <8>;
++	cs0_dq17_tx_de-skew = <9>;
++	cs0_dq18_rx_de-skew = <8>;
++	cs0_dq18_tx_de-skew = <9>;
++	cs0_dq19_rx_de-skew = <8>;
++	cs0_dq19_tx_de-skew = <9>;
++	cs0_dq20_rx_de-skew = <8>;
++	cs0_dq20_tx_de-skew = <9>;
++	cs0_dq21_rx_de-skew = <8>;
++	cs0_dq21_tx_de-skew = <9>;
++	cs0_dq22_rx_de-skew = <8>;
++	cs0_dq22_tx_de-skew = <9>;
++	cs0_dq23_rx_de-skew = <8>;
++	cs0_dq23_tx_de-skew = <9>;
++	cs0_dqs2_rx_de-skew = <7>;
++	cs0_dqs2p_tx_de-skew = <10>;
++	cs0_dqs2n_tx_de-skew = <10>;
++
++	cs0_dm3_rx_de-skew = <8>;
++	cs0_dm3_tx_de-skew = <8>;
++	cs0_dq24_rx_de-skew = <8>;
++	cs0_dq24_tx_de-skew = <9>;
++	cs0_dq25_rx_de-skew = <8>;
++	cs0_dq25_tx_de-skew = <8>;
++	cs0_dq26_rx_de-skew = <8>;
++	cs0_dq26_tx_de-skew = <8>;
++	cs0_dq27_rx_de-skew = <8>;
++	cs0_dq27_tx_de-skew = <8>;
++	cs0_dq28_rx_de-skew = <8>;
++	cs0_dq28_tx_de-skew = <8>;
++	cs0_dq29_rx_de-skew = <8>;
++	cs0_dq29_tx_de-skew = <8>;
++	cs0_dq30_rx_de-skew = <8>;
++	cs0_dq30_tx_de-skew = <8>;
++	cs0_dq31_rx_de-skew = <8>;
++	cs0_dq31_tx_de-skew = <8>;
++	cs0_dqs3_rx_de-skew = <8>;
++	cs0_dqs3p_tx_de-skew = <10>;
++	cs0_dqs3n_tx_de-skew = <10>;
++
++	cs1_dm0_rx_de-skew = <8>;
++	cs1_dm0_tx_de-skew = <9>;
++	cs1_dq0_rx_de-skew = <8>;
++	cs1_dq0_tx_de-skew = <9>;
++	cs1_dq1_rx_de-skew = <8>;
++	cs1_dq1_tx_de-skew = <9>;
++	cs1_dq2_rx_de-skew = <8>;
++	cs1_dq2_tx_de-skew = <9>;
++	cs1_dq3_rx_de-skew = <8>;
++	cs1_dq3_tx_de-skew = <9>;
++	cs1_dq4_rx_de-skew = <8>;
++	cs1_dq4_tx_de-skew = <9>;
++	cs1_dq5_rx_de-skew = <8>;
++	cs1_dq5_tx_de-skew = <9>;
++	cs1_dq6_rx_de-skew = <8>;
++	cs1_dq6_tx_de-skew = <9>;
++	cs1_dq7_rx_de-skew = <8>;
++	cs1_dq7_tx_de-skew = <9>;
++	cs1_dqs0_rx_de-skew = <7>;
++	cs1_dqs0p_tx_de-skew = <10>;
++	cs1_dqs0n_tx_de-skew = <10>;
++
++	cs1_dm1_rx_de-skew = <8>;
++	cs1_dm1_tx_de-skew = <8>;
++	cs1_dq8_rx_de-skew = <8>;
++	cs1_dq8_tx_de-skew = <9>;
++	cs1_dq9_rx_de-skew = <8>;
++	cs1_dq9_tx_de-skew = <8>;
++	cs1_dq10_rx_de-skew = <8>;
++	cs1_dq10_tx_de-skew = <9>;
++	cs1_dq11_rx_de-skew = <8>;
++	cs1_dq11_tx_de-skew = <8>;
++	cs1_dq12_rx_de-skew = <8>;
++	cs1_dq12_tx_de-skew = <9>;
++	cs1_dq13_rx_de-skew = <8>;
++	cs1_dq13_tx_de-skew = <8>;
++	cs1_dq14_rx_de-skew = <8>;
++	cs1_dq14_tx_de-skew = <9>;
++	cs1_dq15_rx_de-skew = <8>;
++	cs1_dq15_tx_de-skew = <8>;
++	cs1_dqs1_rx_de-skew = <8>;
++	cs1_dqs1p_tx_de-skew = <10>;
++	cs1_dqs1n_tx_de-skew = <10>;
++
++	cs1_dm2_rx_de-skew = <8>;
++	cs1_dm2_tx_de-skew = <9>;
++	cs1_dq16_rx_de-skew = <8>;
++	cs1_dq16_tx_de-skew = <9>;
++	cs1_dq17_rx_de-skew = <8>;
++	cs1_dq17_tx_de-skew = <9>;
++	cs1_dq18_rx_de-skew = <8>;
++	cs1_dq18_tx_de-skew = <9>;
++	cs1_dq19_rx_de-skew = <8>;
++	cs1_dq19_tx_de-skew = <9>;
++	cs1_dq20_rx_de-skew = <8>;
++	cs1_dq20_tx_de-skew = <9>;
++	cs1_dq21_rx_de-skew = <8>;
++	cs1_dq21_tx_de-skew = <9>;
++	cs1_dq22_rx_de-skew = <8>;
++	cs1_dq22_tx_de-skew = <9>;
++	cs1_dq23_rx_de-skew = <8>;
++	cs1_dq23_tx_de-skew = <9>;
++	cs1_dqs2_rx_de-skew = <7>;
++	cs1_dqs2p_tx_de-skew = <10>;
++	cs1_dqs2n_tx_de-skew = <10>;
++
++	cs1_dm3_rx_de-skew = <8>;
++	cs1_dm3_tx_de-skew = <8>;
++	cs1_dq24_rx_de-skew = <8>;
++	cs1_dq24_tx_de-skew = <9>;
++	cs1_dq25_rx_de-skew = <8>;
++	cs1_dq25_tx_de-skew = <8>;
++	cs1_dq26_rx_de-skew = <8>;
++	cs1_dq26_tx_de-skew = <8>;
++	cs1_dq27_rx_de-skew = <8>;
++	cs1_dq27_tx_de-skew = <8>;
++	cs1_dq28_rx_de-skew = <8>;
++	cs1_dq28_tx_de-skew = <8>;
++	cs1_dq29_rx_de-skew = <8>;
++	cs1_dq29_tx_de-skew = <8>;
++	cs1_dq30_rx_de-skew = <8>;
++	cs1_dq30_tx_de-skew = <8>;
++	cs1_dq31_rx_de-skew = <8>;
++	cs1_dq31_tx_de-skew = <8>;
++	cs1_dqs3_rx_de-skew = <8>;
++	cs1_dqs3p_tx_de-skew = <10>;
++	cs1_dqs3n_tx_de-skew = <10>;
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index ae8bca0924dd..fd3b20940d36 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -42,6 +42,7 @@
+ 
+ /dts-v1/;
+ #include "rk3328.dtsi"
++#include "rk3328-dram-box-plus-timing.dtsi"
+ 
+ / {
+ 	model = "Firefly ROC-RK3328-CC Board";
+@@ -180,7 +181,37 @@
+ 
+ &dmc {
+ 	center-supply = <&vdd_logic>;
+-	status = "okay";
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       1066000
++		SYS_STATUS_REBOOT       1066000
++		SYS_STATUS_SUSPEND      1066000
++		SYS_STATUS_VIDEO_1080P  1066000
++		SYS_STATUS_VIDEO_4K     1066000
++		SYS_STATUS_VIDEO_4K_10B 1066000
++		SYS_STATUS_PERFORMANCE  1066000
++		SYS_STATUS_BOOST        1066000
++	>;
++	status = "okay";
++};
++
++&dmc_opp_table {
++	rockchip,leakage-voltage-sel = <
++		1   8     0
++		9   254   0
++	>;
++	opp-933000000 {
++		opp-hz = /bits/ 64 <933000000>;
++		opp-microvolt = <1150000>;
++		opp-microvolt-L0 = <1150000>;
++		opp-microvolt-L1 = <1100000>;
++	};
++	opp-1066000000 {
++		opp-hz = /bits/ 64 <1066000000>;
++		opp-microvolt = <1200000>;
++		opp-microvolt-L0 = <1200000>;
++		opp-microvolt-L1 = <1175000>;
++	};
+ };
+ 
+ &display_subsystem {
+
+From cad007a8fc9159b8a45fec71bab6c6402bafde3d Mon Sep 17 00:00:00 2001
+From: Jonas Karlman <jonas@kwiboo.se>
+Date: Sat, 21 Apr 2018 13:21:24 +0200
+Subject: [PATCH] arm64: dts: rockchip: rk3328-box-trn9: use 1066MHz ddr
+ frequency
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts | 29 +++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts b/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
+index db0946b936c2..acf4fa4aeabd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
+@@ -42,6 +42,7 @@
+ 
+ /dts-v1/;
+ #include "rk3328.dtsi"
++#include "rk3328-dram-box-plus-timing.dtsi"
+ 
+ / {
+ 	model = "Rockchip RK3328 TRN9";
+@@ -225,7 +226,33 @@
+ 
+ &dmc {
+ 	center-supply = <&vdd_logic>;
+-	status = "okay";
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       1066000
++		SYS_STATUS_REBOOT       1066000
++		SYS_STATUS_SUSPEND      1066000
++		SYS_STATUS_VIDEO_1080P  1066000
++		SYS_STATUS_VIDEO_4K     1066000
++		SYS_STATUS_VIDEO_4K_10B 1066000
++		SYS_STATUS_PERFORMANCE  1066000
++		SYS_STATUS_BOOST        1066000
++	>;
++	status = "okay";
++};
++
++&dmc_opp_table {
++	opp-933000000 {
++		opp-hz = /bits/ 64 <933000000>;
++		opp-microvolt = <1150000>;
++		opp-microvolt-L0 = <1150000>;
++		opp-microvolt-L1 = <1100000>;
++	};
++	opp-1066000000 {
++		opp-hz = /bits/ 64 <1066000000>;
++		opp-microvolt = <1200000>;
++		opp-microvolt-L0 = <1200000>;
++		opp-microvolt-L1 = <1175000>;
++	};
+ };
+ 
+ &display_subsystem {
