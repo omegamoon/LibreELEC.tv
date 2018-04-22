@@ -4,10 +4,10 @@ This is a SoC device for RK3288
 
 **Build**
 
-Modelname              Vendor and model
-=====================+=====================================
-asus-tinkerboard     - Asus TinkerBoard
-mqmaker-miqi         - MqMaker MiQi
+| Modelname | Vendor and model |
+| ------ | ------ |
+| asus-tinkerboard | Asus Tinkerboard |
+| mqmaker-miqi| MqMaker MiQi |
 
 PROJECT=Rockchip ARCH=arm DEVICE=RK3288 DEVICE_MODEL=[Modelname] make image
 
