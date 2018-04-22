@@ -9,4 +9,6 @@ SUBSYSTEMS=="sdio", ATTRS{vendor}=="0x024c", ATTRS{device}=="0x0626", \
   TAG+="systemd", ENV{SYSTEMD_WANTS}+="hciattach-realtek.service"
 SUBSYSTEMS=="sdio", ATTRS{vendor}=="0x02d0", ATTRS{device}=="0x4356", \
   TAG+="systemd", ENV{SYSTEMD_WANTS}+="hciattach@bcm43xx.service"
+SUBSYSTEMS=="sdio", ATTRS{vendor}=="0x02d0", ATTRS{device}=="0xa9bf", \
+  TAG+="systemd", ENV{SYSTEMD_WANTS}+="hciattach@bcm43xx.service"
 LABEL="end"
