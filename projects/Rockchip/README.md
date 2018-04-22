@@ -4,30 +4,23 @@ This project is for Rockchip SoC devices
 
 ## Devices
 
-**RK3288**
-Rockchip/devices/RK3288/models:
-  * asus-tinkerboard     - Asus Tinkerboard
-  * mqmaker-miqi         - MqMaker MiQi
-
-**RK3328**
-Rockchip/devices/RK3328/models:
-  * box-z28              - Box-Z28
-  * pine64-rock64        - PINE64 Rock64
-                         - CloudMedia Popcorn Hour Transformer
-  * pine64-rockbox       - CloudMedia Popcorn Hour RockBox
-  * rikomagic-v3         - RikoMagic V3
-  * ugoos-um4            - Ugoos UM4
-  ! firefly-roc          - Firefly ROC-RK3328-CC
-
-**RK3399**
-Rockchip/devices/RK3399/models:
-  * 96boards-rock960     - 96Boards ROCK960
-  * vamrs-sapphire       - Vamrs Sapphire
-  ! hardkernel-odroid-n1 - Hardkernel ODROID-N1
-  ! pine64-rockpro64     - PINE64 RockPro64
-  ! yundoo-y8            - Yundoo Y8
-  ! rikomagic-mk39       - RikoMagic MK39
-  ! ugoos-ut5pro         - Ugoos UT5 PRO
+| Device | Model |
+| ------ | ------ |
+| RK3288 | [Asus Tinkerboard](devices/RK3288/models/asus-tinkerboard) |
+| | [MqMaker MiQi](devices/RK3288/models/mqmaker-miqi) |
+| RK3328 | [Box-Z28](devices/RK3328/models/box-z28) |
+|  | [PINE64 Rock64 / Cloudmedia Popcorn Hour Transformer](devices/RK3328/models/pine64-rock64)|
+|  | [Cloudmedia Popcorn Hour RockBox](devices/RK3328/models/pine64-rockbox) |
+|  | [RikoMagic V3](devices/RK3328/models/rikomagic-v3) |
+|  | [Ugoos UM4](devices/RK3328/models/ugoos-um4) |
+|  | [Firefly ROC-RK3328-CC](devices/RK3328/models/firefly-roc) |
+| RK3399 | [96Boards ROCK960](devices/RK3399/models/96boards-rock960) |
+|  | [Vamrs Sapphire](devices/RK3399/models/vamrs-sapphire) |
+|  | [Hardkernel ODROID-N1](devices/RK3399/models/hardkernel-odroid-n1) |
+|  | [PINE64 RockPro64](devices/RK3399/models/pine64-rockpro64) |
+|  | [Yundoo Y8](devices/RK3399/models/yundoo-y8) |
+|  | [RikoMagic MK39](devices/RK3399/models/rikomagic-mk39) |
+|  | [Ugoos UT5 PRO](devices/RK3399/models/ugoos-ut5pro) |
 
 **My single-board computer is not listed, will it be added in the future?**<br />
 If your single-board computer uses a current generation SoC listed on http://opensource.rock-chips.com/wiki_Main_Page the odds are in your favor.
