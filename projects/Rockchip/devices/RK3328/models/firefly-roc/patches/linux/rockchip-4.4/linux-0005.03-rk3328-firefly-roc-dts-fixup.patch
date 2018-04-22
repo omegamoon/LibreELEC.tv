@@ -1,0 +1,51 @@
+diff -Naur a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts	2018-04-22 13:43:36.000000000 +0200
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts	2018-04-22 13:45:38.000000000 +0200
+@@ -42,6 +42,7 @@
+ 
+ /dts-v1/;
+ #include "rk3328.dtsi"
++#include "rk3328-dram-box-plus-timing.dtsi"
+ 
+ / {
+ 	model = "Firefly ROC-RK3328-CC Board";
+@@ -180,9 +181,39 @@
+ 
+ &dmc {
+ 	center-supply = <&vdd_logic>;
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       1066000
++		SYS_STATUS_REBOOT       1066000
++		SYS_STATUS_SUSPEND      1066000
++		SYS_STATUS_VIDEO_1080P  1066000
++		SYS_STATUS_VIDEO_4K     1066000
++		SYS_STATUS_VIDEO_4K_10B 1066000
++		SYS_STATUS_PERFORMANCE  1066000
++		SYS_STATUS_BOOST        1066000
++	>;
+ 	status = "okay";
+ };
+ 
++&dmc_opp_table {
++	rockchip,leakage-voltage-sel = <
++		1   8     0
++		9   254   0
++	>;
++	opp-933000000 {
++		opp-hz = /bits/ 64 <933000000>;
++		opp-microvolt = <1150000>;
++		opp-microvolt-L0 = <1150000>;
++		opp-microvolt-L1 = <1100000>;
++	};
++	opp-1066000000 {
++		opp-hz = /bits/ 64 <1066000000>;
++		opp-microvolt = <1200000>;
++		opp-microvolt-L0 = <1200000>;
++		opp-microvolt-L1 = <1175000>;
++	};
++};
++
+ &display_subsystem {
+ 	status = "okay";
+ };
