@@ -1,0 +1,10 @@
+################################################################################
+# setup RK3328 Ugoos UM4 specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="Ugoos"
+
+    UBOOT_CONFIG="evb-rk3328_defconfig"
+    KERNEL_DEVICE_TREE="rockchip/rk3328-ugoos-um4"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
