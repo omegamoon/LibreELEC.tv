@@ -5,20 +5,29 @@ This project is for Rockchip SoC devices
 ## Devices
 
 **RK3288**
-* [ASUS Tinker Board](devices/TinkerBoard)
-* [mqmaker MiQi](devices/MiQi)
+Rockchip/devices/RK3288/models:
+  * asus-tinkerboard     - Asus Tinkerboard
+  * mqmaker-miqi         - MqMaker MiQi
 
 **RK3328**
-* [PINE64 ROCK64](devices/RK3328)
-* [Popcorn Hour RockBox](devices/RK3328)
-* [Popcorn Hour Transformer](devices/RK3328)
-* [Firefly ROC-RK3328-CC](devices/RK3328)
+Rockchip/devices/RK3328/models:
+  * box-z28              - Box-Z28
+  * pine64-rock64        - PINE64 Rock64
+                         - CloudMedia Popcorn Hour Transformer
+  * pine64-rockbox       - CloudMedia Popcorn Hour RockBox
+  * rikomagic-v3         - RikoMagic V3
+  * ugoos-um4            - Ugoos UM4
+  ! firefly-roc          - Firefly ROC-RK3328-CC
 
 **RK3399**
-* [96rocks ROCK960](devices/RK3399)
-* [Hardkernel ODROID-N1](devices/RK3399)
-* [PINE64 RockPro64](devices/RK3399)
-* [Rockchip Sapphire Board](devices/RK3399)
+Rockchip/devices/RK3399/models:
+  * 96boards-rock960     - 96Boards ROCK960
+  * vamrs-sapphire       - Vamrs Sapphire
+  ! hardkernel-odroid-n1 - Hardkernel ODROID-N1
+  ! pine64-rockpro64     - PINE64 RockPro64
+  ! yundoo-y8            - Yundoo Y8
+  ! rikomagic-mk39       - RikoMagic MK39
+  ! ugoos-ut5pro         - Ugoos UT5 PRO
 
 **My single-board computer is not listed, will it be added in the future?**<br />
 If your single-board computer uses a current generation SoC listed on http://opensource.rock-chips.com/wiki_Main_Page the odds are in your favor.
