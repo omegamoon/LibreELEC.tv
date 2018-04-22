@@ -1,0 +1,10 @@
+################################################################################
+# setup RK3328 Box Z28 specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="BOX"
+    UBOOT_CONFIG="evb-rk3328_defconfig"
+    KERNEL_DEVICE_TREE="rockchip/rk3328-box"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
+    
