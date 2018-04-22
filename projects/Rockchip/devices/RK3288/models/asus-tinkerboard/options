@@ -1,0 +1,10 @@
+################################################################################
+# setup RK3288 Asus TinkerBoard specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="Asus"
+
+    UBOOT_CONFIG="tinker-rk3288_config"
+    KERNEL_DEVICE_TREE="rk3288-miniarm"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
