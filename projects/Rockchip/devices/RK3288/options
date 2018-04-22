@@ -2,6 +2,9 @@
 # setup device defaults
 ################################################################################
 
+  # device SOC
+    DEVICE_SOC="rk3288"
+ 
   # The TARGET_CPU variable controls which processor should be targeted for
   # generated code.
     case $TARGET_ARCH in
@@ -13,14 +16,11 @@
         ;;
     esac
 
-  # Configuration for u-boot
-    UBOOT_SYSTEM="rk3288"
-
   # Kernel target
     KERNEL_TARGET="zImage"
 
   # Additional kernel make parameters (for example to specify the u-boot loadaddress)
-    KERNEL_MAKE_EXTRACMD="rk3288-miniarm.dtb"
+    KERNEL_MAKE_EXTRACMD=""
 
   # Mali GPU family
     MALI_FAMILY="t760"
