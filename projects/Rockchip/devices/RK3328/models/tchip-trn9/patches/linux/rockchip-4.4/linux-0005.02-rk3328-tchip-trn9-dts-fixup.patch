@@ -1,0 +1,57 @@
+From cad007a8fc9159b8a45fec71bab6c6402bafde3d Mon Sep 17 00:00:00 2001
+From: Jonas Karlman <jonas@kwiboo.se>
+Date: Sat, 21 Apr 2018 13:21:24 +0200
+Subject: [PATCH] arm64: dts: rockchip: rk3328-box-trn9: use 1066MHz ddr
+ frequency
+
+---
+ arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts | 29 +++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts b/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
+index db0946b936c2..acf4fa4aeabd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-box-trn9.dts
+@@ -42,6 +42,7 @@
+ 
+ /dts-v1/;
+ #include "rk3328.dtsi"
++#include "rk3328-dram-box-plus-timing.dtsi"
+ 
+ / {
+ 	model = "Rockchip RK3328 TRN9";
+@@ -225,7 +226,33 @@
+ 
+ &dmc {
+ 	center-supply = <&vdd_logic>;
+-	status = "okay";
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       1066000
++		SYS_STATUS_REBOOT       1066000
++		SYS_STATUS_SUSPEND      1066000
++		SYS_STATUS_VIDEO_1080P  1066000
++		SYS_STATUS_VIDEO_4K     1066000
++		SYS_STATUS_VIDEO_4K_10B 1066000
++		SYS_STATUS_PERFORMANCE  1066000
++		SYS_STATUS_BOOST        1066000
++	>;
++	status = "okay";
++};
++
++&dmc_opp_table {
++	opp-933000000 {
++		opp-hz = /bits/ 64 <933000000>;
++		opp-microvolt = <1150000>;
++		opp-microvolt-L0 = <1150000>;
++		opp-microvolt-L1 = <1100000>;
++	};
++	opp-1066000000 {
++		opp-hz = /bits/ 64 <1066000000>;
++		opp-microvolt = <1200000>;
++		opp-microvolt-L0 = <1200000>;
++		opp-microvolt-L1 = <1175000>;
++	};
+ };
+ 
+ &display_subsystem {
