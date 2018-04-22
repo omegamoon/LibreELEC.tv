@@ -1,0 +1,10 @@
+################################################################################
+# setup RK3328 Cloudmedia Rockbox specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="Cloudmedia"
+    UBOOT_CONFIG="evb-rk3328_defconfig"
+    KERNEL_DEVICE_TREE="rockchip/rk3328-rockbox"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
+    
