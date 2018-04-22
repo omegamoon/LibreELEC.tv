@@ -1,0 +1,10 @@
+################################################################################
+# setup RK3328 T-Chip TRN9 specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="T-Chip"
+
+    UBOOT_CONFIG="evb-rk3328_defconfig"
+    KERNEL_DEVICE_TREE="rockchip/rk3328-box-trn9"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
