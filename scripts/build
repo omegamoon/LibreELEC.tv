@@ -76,7 +76,7 @@ if [ -f $STAMP ] ; then
     rm -f $STAMP
   fi
 
-  if [ "$1" = "u-boot" -a ! "$UBOOT_SYSTEM" = "$STAMP_UBOOT_SYSTEM" ]; then
+  if [ "$1" = "u-boot" -a ! "$DEVICE_SOC" = "$STAMP_DEVICE_SOC" ]; then
     rm -f $STAMP
   fi
 fi
@@ -563,5 +563,5 @@ for i in PKG_NAME PKG_DEEPHASH BUILD_WITH_DEBUG; do
 done
 
 if [ "$1" = "u-boot" ]; then
-  echo "STAMP_UBOOT_SYSTEM=\"${UBOOT_SYSTEM}\"" >> $STAMP
+  echo "STAMP_DEVICE_SOC=\"${DEVICE_SOC}\"" >> $STAMP
 fi

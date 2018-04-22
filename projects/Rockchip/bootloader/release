@@ -17,7 +17,7 @@
 ################################################################################
 
 mkdir -p $RELEASE_DIR/3rdparty/bootloader
-  if [ -n "$UBOOT_SYSTEM" ]; then
+  if [ -n "$DEVICE_SOC" ]; then
     BOOTLOADER_DIR=$(get_build_dir $BOOTLOADER)
     if [ -f $BOOTLOADER_DIR/idbloader.img ]; then
       cp -a $BOOTLOADER_DIR/idbloader.img $RELEASE_DIR/3rdparty/bootloader

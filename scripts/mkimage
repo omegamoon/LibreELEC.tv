@@ -226,12 +226,12 @@ EOF
       mcopy -s $RELEASE_DIR/3rdparty/bootloader/overlays ::
     fi
 
-elif [ "$BOOTLOADER" = "u-boot" -a \( -n "$UBOOT_SYSTEM" -o "$UBOOT_VERSION" = "vendor" \) ]; then
+elif [ "$BOOTLOADER" = "u-boot" -a \( -n "$KERNEL_DEVICE_TREE" -o "$UBOOT_VERSION" = "vendor" \) ]; then
   # create bootloader configuration
     echo "image: creating bootloader configuration..."
 
     if [ "$UBOOT_VERSION" != "vendor" ]; then
-      DTB="$($SCRIPTS/uboot_helper $PROJECT $DEVICE $UBOOT_SYSTEM dtb)"
+      DTB=$(basename "$KERNEL_DEVICE_TREE").dtb
 
       if [ -f "$RELEASE_DIR/3rdparty/bootloader/$DTB" ]; then
         mcopy $RELEASE_DIR/3rdparty/bootloader/$DTB ::
@@ -266,7 +266,7 @@ EOF
     mcopy $RELEASE_DIR/target/SYSTEM.md5 ::/SYSTEM.md5
 
 elif [ "$BOOTLOADER" = "u-boot" ]; then
-  echo "to make an image using u-boot UBOOT_SYSTEM must be set"
+  echo "to make an image using u-boot KERNEL_DEVICE_TREE must be set"
   cleanup
 fi # bootloader
 
@@ -337,8 +337,10 @@ fi # bootloader
   fi
 
 # gzip
-  echo "image: compressing..."
-  gzip $DISK
+#  echo "image: compressing..."
+#  gzip $DISK
+
+  echo $IMAGE_NAME > target/latest_$DEVICE_MODEL
 
 # set owner
   if [ -n "$SUDO_USER" ] ; then

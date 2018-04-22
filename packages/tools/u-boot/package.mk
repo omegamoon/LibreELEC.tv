@@ -50,13 +50,12 @@ case "$PROJECT" in
 esac
 
 make_target() {
-  if [ -z "$UBOOT_SYSTEM" ]; then
-    echo "UBOOT_SYSTEM must be set to build an image"
-    echo "see './scripts/uboot_helper' for more information"
-  else
+  if [ -n $UBOOT_CONFIG ]; then
     CROSS_COMPILE="$TARGET_KERNEL_PREFIX" LDFLAGS="" ARCH=arm make mrproper
-    CROSS_COMPILE="$TARGET_KERNEL_PREFIX" LDFLAGS="" ARCH=arm make $($ROOT/$SCRIPTS/uboot_helper $PROJECT $DEVICE $UBOOT_SYSTEM config)
+    CROSS_COMPILE="$TARGET_KERNEL_PREFIX" LDFLAGS="" ARCH=arm make $UBOOT_CONFIG
     CROSS_COMPILE="$TARGET_KERNEL_PREFIX" LDFLAGS="" ARCH=arm make HOSTCC="$HOST_CC" HOSTSTRIP="true"
+  else
+    echo "UBOOT_CONFIG must be set to build an image"
   fi
 }
 
@@ -64,7 +63,7 @@ makeinstall_target() {
   mkdir -p $INSTALL/usr/share/bootloader
 
     # Only install u-boot.img et al when building a board specific image
-    if [ -n "$UBOOT_SYSTEM" ]; then
+    if [ -n "$UBOOT_CONFIG" ]; then
       find_file_path bootloader/install && . ${FOUND_PATH}
     fi
 
