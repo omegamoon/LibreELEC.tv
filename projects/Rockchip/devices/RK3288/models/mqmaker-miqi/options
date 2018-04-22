@@ -1,0 +1,13 @@
+################################################################################
+# setup RK3288 MqMaker MiQi specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="MqMaker"
+
+    UBOOT_CONFIG="miqi-rk3288_config"
+    KERNEL_DEVICE_TREE="rk3288-miqi"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
+
+  # Mali GPU family
+    MALI_REVISION="r1p0"
