@@ -1,0 +1,78 @@
+diff -Naur a/drivers/media/rc/keymaps/Makefile b/drivers/media/rc/keymaps/Makefile
+--- a/drivers/media/rc/keymaps/Makefile	2018-03-17 23:57:37.000000000 +0100
++++ b/drivers/media/rc/keymaps/Makefile	2018-03-18 00:05:26.000000000 +0100
+@@ -102,6 +102,7 @@
+ 			rc-tt-1500.o \
+ 			rc-twinhan-dtv-cab-ci.o \
+ 			rc-twinhan1027.o \
++			rc-ugoos-um4.o \
+ 			rc-wetek-hub.o \
+ 			rc-wetek-play-2.o \
+ 			rc-videomate-m1f.o \
+diff -Naur a/drivers/media/rc/keymaps/rc-ugoos-um4.c b/drivers/media/rc/keymaps/rc-ugoos-um4.c
+--- a/drivers/media/rc/keymaps/rc-ugoos-um4.c	1970-01-01 01:00:00.000000000 +0100
++++ b/drivers/media/rc/keymaps/rc-ugoos-um4.c	2018-03-18 14:03:12.000000000 +0100
+@@ -0,0 +1,52 @@
++/* Keytable for Ugoos-UM4 IR Remote Controller
++ *
++ * Copyright (c) 2018 Omegamoon
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ */
++
++#include <media/rc-map.h>
++#include <linux/module.h>
++
++static struct rc_map_table ugoos_um4[] = {
++	{ 0x0014, KEY_POWER },
++	{ 0x0013, KEY_MENU },
++	{ 0x0003, KEY_UP },
++	{ 0x0002, KEY_DOWN },
++	{ 0x000e, KEY_LEFT },
++	{ 0x001a, KEY_RIGHT },
++	{ 0x0007, KEY_OK },
++	{ 0x0058, KEY_VOLUMEDOWN },
++	{ 0x005c, KEY_MUTE },
++	{ 0x000b, KEY_VOLUMEUP },
++	{ 0x0001, KEY_BACK },
++	{ 0x0048, KEY_HOME },
++};
++
++static struct rc_map_list ugoos_um4_map = {
++	.map = {
++		.scan    = ugoos_um4,
++		.size    = ARRAY_SIZE(ugoos_um4),
++		.rc_type = RC_TYPE_NEC,
++		.name    = RC_MAP_UGOOS_UM4,
++	}
++};
++
++static int __init init_rc_map_ugoos_um4(void)
++{
++	return rc_map_register(&ugoos_um4_map);
++}
++
++static void __exit exit_rc_map_ugoos_um4(void)
++{
++	rc_map_unregister(&ugoos_um4_map);
++}
++
++module_init(init_rc_map_ugoos_um4)
++module_exit(exit_rc_map_ugoos_um4)
++
++MODULE_LICENSE("GPL");
++MODULE_AUTHOR("Omegamoon");
+diff -Naur a/include/media/rc-map.h b/include/media/rc-map.h
+--- a/include/media/rc-map.h	2018-03-16 09:01:35.000000000 +0100
++++ b/include/media/rc-map.h	2018-03-17 22:42:03.000000000 +0100
+@@ -212,6 +212,7 @@
+ #define RC_MAP_TT_1500                   "rc-tt-1500"
+ #define RC_MAP_TWINHAN_DTV_CAB_CI        "rc-twinhan-dtv-cab-ci"
+ #define RC_MAP_TWINHAN_VP1027_DVBS       "rc-twinhan1027"
++#define RC_MAP_UGOOS_UM4                 "rc-ugoos-um4"
+ #define RC_MAP_WETEK_HUB                 "rc-wetek-hub"
+ #define RC_MAP_WETEK_PLAY_2              "rc-wetek-play-2"
+ #define RC_MAP_VIDEOMATE_K100            "rc-videomate-k100"
