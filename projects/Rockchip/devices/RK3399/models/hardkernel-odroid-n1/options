@@ -1,0 +1,10 @@
+################################################################################
+# setup RK3399 Hardkernel Odroid-N1 specific defaults
+################################################################################
+
+  # Per device set any minor differences for this device model
+    DEVICE_VENDOR="Hardkernel"
+
+    UBOOT_CONFIG="evb-rk3399_config"
+    KERNEL_DEVICE_TREE="rockchip/rk3399-odroidn1-linux"
+    KERNEL_MAKE_EXTRACMD+=" ${KERNEL_DEVICE_TREE}.dtb"
