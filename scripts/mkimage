@@ -249,7 +249,9 @@ EOF
       mcopy -s "$LE_TMP"/extlinux ::
     fi
 
-    if [ -f $PROJECT_DIR/$PROJECT/devices/$DEVICE/bootloader/mkimage ]; then
+    if [ -f $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/bootloader/mkimage ]; then
+      . $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/bootloader/mkimage
+    elif [ -f $PROJECT_DIR/$PROJECT/devices/$DEVICE/bootloader/mkimage ]; then
       . $PROJECT_DIR/$PROJECT/devices/$DEVICE/bootloader/mkimage
     elif [ -f $PROJECT_DIR/$PROJECT/bootloader/mkimage ]; then
       . $PROJECT_DIR/$PROJECT/bootloader/mkimage

@@ -61,8 +61,16 @@ PROJECT_DIR="$ROOT/projects"
    . $PROJECT_DIR/$PROJECT/devices/$DEVICE/options
  fi
 
+# read device model options if available
+ if [ -n $DEVICE_MODEL ]; then
+   if [ -f "$PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/options" ]; then
+     . $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/options
+   fi
+ fi
+
 LINUX_DEPENDS="$PROJECT_DIR/$PROJECT/linux $PROJECT_DIR/$PROJECT/patches/linux $ROOT/packages/linux"
 [ -n "$DEVICE" ] && LINUX_DEPENDS+=" $PROJECT_DIR/$PROJECT/devices/$DEVICE/linux $PROJECT_DIR/$PROJECT/devices/$DEVICE/patches/linux"
+[ -n "$DEVICE_MODEL" ] && LINUX_DEPENDS+=" $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/linux $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/patches/linux"
 [ "$TARGET_ARCH" = "x86_64" ] && LINUX_DEPENDS+=" $ROOT/packages/linux-firmware/intel-ucode $ROOT/packages/linux-firmware/kernel-firmware"
 
 # Need to point to your actual cc

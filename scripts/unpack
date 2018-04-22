@@ -131,6 +131,7 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" ]; then
         [ -d $PKG_DIR/patches/$patch_dir ] && PATCH_DIRS_PKG="$PATCH_DIRS_PKG $PKG_DIR/patches/$patch_dir/*.patch"
         [ -d $PROJECT_DIR/$PROJECT/patches/$PKG_NAME/$patch_dir ] && PATCH_DIRS_PRJ="$PATCH_DIRS_PRJ $PROJECT_DIR/$PROJECT/patches/$PKG_NAME/$patch_dir/*.patch"
         [ -d $PROJECT_DIR/$PROJECT/devices/$DEVICE/patches/$PKG_NAME/$patch_dir ] && PATCH_DIRS_PRJ="$PATCH_DIRS_PRJ $PROJECT_DIR/$PROJECT/devices/$DEVICE/patches/$PKG_NAME/$patch_dir/*.patch"
+        [ -d $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/patches/$PKG_NAME/$patch_dir ] && PATCH_DIRS_PRJ="$PATCH_DIRS_PRJ $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/patches/$PKG_NAME/$patch_dir/*.patch"
       done
     fi
 
@@ -143,7 +144,8 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" ]; then
              $PROJECT_DIR/$PROJECT/patches/$PKG_NAME/$PATCH_ARCH/*.patch \
              $PATCH_DIRS_PRJ \
              $PROJECT_DIR/$PROJECT/patches/$PKG_NAME/$PKG_VERSION/*.patch \
-             $PROJECT_DIR/$PROJECT/devices/$DEVICE/patches/$PKG_NAME/*.patch; do
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/patches/$PKG_NAME/*.patch \
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/patches/$PKG_NAME/*.patch; do
 
       thisdir="$(dirname "$i")"
 
@@ -163,6 +165,8 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" ]; then
         PATCH_DESC="(project - $PKG_VERSION)"
       elif [ "$thisdir" = "$PROJECT_DIR/$PROJECT/devices/$DEVICE/patches/$PKG_NAME" ]; then
         PATCH_DESC="(device)"
+      elif [ "$thisdir" = "$PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/patches/$PKG_NAME" ]; then
+        PATCH_DESC="(model)"
       else
         if [[ "$thisdir" =~ ^$PKG_DIR/.* ]]; then
           PATCH_DESC="(common - $(basename "$thisdir"))"

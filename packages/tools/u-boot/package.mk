@@ -30,6 +30,7 @@ PKG_IS_KERNEL_PKG="yes"
 
 PKG_NEED_UNPACK="$PROJECT_DIR/$PROJECT/bootloader"
 [ -n "$DEVICE" ] && PKG_NEED_UNPACK+=" $PROJECT_DIR/$PROJECT/devices/$DEVICE/bootloader"
+[ -n "$DEVICE_MODEL" ] && PKG_NEED_UNPACK+=" $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/bootloader"
 
 case "$PROJECT" in
   Rockchip)

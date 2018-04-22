@@ -299,21 +299,25 @@ post_makeinstall_target() {
   $PKG_DIR/scripts/xml_merge.py $PKG_DIR/config/guisettings.xml \
                                 $PROJECT_DIR/$PROJECT/kodi/guisettings.xml \
                                 $PROJECT_DIR/$PROJECT/devices/$DEVICE/kodi/guisettings.xml \
+                                $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/kodi/guisettings.xml \
                                 > $INSTALL/usr/share/kodi/config/guisettings.xml
 
   $PKG_DIR/scripts/xml_merge.py $PKG_DIR/config/sources.xml \
                                 $PROJECT_DIR/$PROJECT/kodi/sources.xml \
                                 $PROJECT_DIR/$PROJECT/devices/$DEVICE/kodi/sources.xml \
+                                $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/kodi/sources.xml \
                                 > $INSTALL/usr/share/kodi/config/sources.xml
 
   $PKG_DIR/scripts/xml_merge.py $PKG_DIR/config/advancedsettings.xml \
                                 $PROJECT_DIR/$PROJECT/kodi/advancedsettings.xml \
                                 $PROJECT_DIR/$PROJECT/devices/$DEVICE/kodi/advancedsettings.xml \
+                                $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/kodi/advancedsettings.xml \
                                 > $INSTALL/usr/share/kodi/system/advancedsettings.xml
 
   $PKG_DIR/scripts/xml_merge.py $PKG_DIR/config/appliance.xml \
                                 $PROJECT_DIR/$PROJECT/kodi/appliance.xml \
                                 $PROJECT_DIR/$PROJECT/devices/$DEVICE/kodi/appliance.xml \
+                                $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/kodi/appliance.xml \
                                 > $INSTALL/usr/share/kodi/system/settings/appliance.xml
 
   # update addon manifest

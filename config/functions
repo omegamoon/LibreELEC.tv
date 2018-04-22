@@ -226,7 +226,10 @@ kernel_config_path() {
 
   config_name="linux.${TARGET_PATCH_ARCH:-$TARGET_ARCH}.conf"
 
-  for cfg in $PROJECT_DIR/$PROJECT/devices/$DEVICE/linux/$pkg_linux_version/$config_name \
+  for cfg in $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/linux/$pkg_linux_version/$config_name \
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/linux/$LINUX/$config_name \
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/linux/$config_name \
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/linux/$pkg_linux_version/$config_name \
              $PROJECT_DIR/$PROJECT/devices/$DEVICE/linux/$LINUX/$config_name \
              $PROJECT_DIR/$PROJECT/devices/$DEVICE/linux/$config_name \
              $PROJECT_DIR/$PROJECT/linux/$pkg_linux_version/$config_name \
@@ -236,7 +239,9 @@ kernel_config_path() {
              $pkg_linux_dir/config/$LINUX/$config_name \
              $pkg_linux_dir/config/$config_name \
              ; do
+    # ignore directories with missing DEVICE or DEVICE_MODEL components
     [[ $cfg =~ /devices//linux/ ]] && continue
+    [[ $cfg =~ /devices//models/ ]] && continue
     [ -f "$cfg" ] && echo "$cfg" && break
   done
 }
@@ -269,9 +274,9 @@ get_full_firmware_dir() {
 
 # get package's build dir
 get_build_dir() {
-  local _PKG_NAME="$(get_pkg_variable "$1" PKG_NAME)" _PKG_VERSION="$(get_pkg_version "$1")"
-  if [ -n "$_PKG_NAME" -a -n "$_PKG_VERSION" ]; then
-    echo $BUILD/${_PKG_NAME}-${_PKG_VERSION}
+  local _PKG_BUILD="$(get_pkg_variable "$1" PKG_BUILD)"
+  if [ -n "$_PKG_BUILD" ]; then
+    echo ${_PKG_BUILD}
   fi
 }
 
@@ -402,7 +407,9 @@ find_path() {
 
   [ "$test_func" = "-f" ] && ftype="file" || ftype="dir"
 
-  for dir in $PROJECT_DIR/$PROJECT/devices/$DEVICE/packages/$PKG_NAME \
+  for dir in $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/packages/$PKG_NAME \
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL \
+             $PROJECT_DIR/$PROJECT/devices/$DEVICE/packages/$PKG_NAME \
              $PROJECT_DIR/$PROJECT/devices/$DEVICE \
              $PROJECT_DIR/$PROJECT/packages/$PKG_NAME \
              $PROJECT_DIR/$PROJECT \
@@ -414,6 +421,8 @@ find_path() {
     [[ $dir =~ /packages/$ ]] && continue
     [[ $dir =~ /devices/$ ]] && continue
     [[ $dir =~ /devices//packages/$PKG_NAME$ ]] && continue
+    [[ $dir =~ /devices//models/$ ]] && continue
+    [[ $dir =~ /devices//models//packages/$PKG_NAME$ ]] && continue
 
     if [ $wildcard -eq 1 ]; then
       ls $dir/$search 1>/dev/null 2>&1 && match="$dir/$search" && break
@@ -786,6 +795,13 @@ init_package_cache() {
       done
     fi
 
+    # cache project/device/model folder for a package
+    if [ -n $DEVICE_MODEL ]; then
+      for DIR in $(find $ROOT/projects/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/packages -type d 2>/dev/null); do
+        [ -r "$DIR/package.mk" ] && _CACHE_PACKAGE_LOCAL+="${DIR}${_ANCHOR}\n"
+      done
+    fi
+
     # cache project folder for a package
     for DIR in $(find $ROOT/projects/$PROJECT/packages -type d 2>/dev/null); do
       [ -r "$DIR/package.mk" ] && _CACHE_PACKAGE_LOCAL+="${DIR}${_ANCHOR}\n"
@@ -860,7 +876,11 @@ check_config() {
   fi
 
   if [ -d $PROJECT_DIR/$PROJECT/devices/$DEVICE/linux ]; then
-    linux_config_dir="$PROJECT_DIR/$PROJECT/devices/$DEVICE/linux"
+    if [ -d $PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/linux ]; then
+      linux_config_dir="$PROJECT_DIR/$PROJECT/devices/$DEVICE/models/$DEVICE_MODEL/linux"
+    else
+      linux_config_dir="$PROJECT_DIR/$PROJECT/devices/$DEVICE/linux"
+    fi
   else
     linux_config_dir="$PROJECT_DIR/$PROJECT/linux"
   fi
